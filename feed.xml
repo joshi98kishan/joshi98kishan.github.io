@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-10T15:12:01+05:30</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Linear Algebra for ML</title><link href="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/" rel="alternate" type="text/html" title="Linear Algebra for ML" /><published>2025-11-10T00:00:00+05:30</published><updated>2025-11-10T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/"><![CDATA[<p><span style="color: blue;"><em><strong>Note:-</strong> This blog is under active development. I am currently reading a book titled “Linear Algebra” by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete.</em></span></p>
+
+<h3 id="context">Context</h3>
+<p><em>If you haven’t read previous blogs, here is some context:</em></p>
+
+<p>I want to become a fundamental AI researcher, and this is my sole goal. And I am preparing myself for it by writing blogs. I have explained in the previous blogs that blogging is perfect for me for two reasons - it helps me to properly understand a topic, and at the same time, it allows me to give a service of education.</p>
+
+<p>I am currently only good at school-level mathematics. So, <strong>from this level, whatever more topics are required for the goal, I will be mastering them, and at the same time, I will write a blog on each topic mentioning all my understanding of that topic</strong>. I am currently in a position where I know what topics I should learn, how I should learn them, and how well I should know those topics. These topics are divided into two major groups. The first group of topics is nothing but the maths required for Machine Learning (a way to implement AI), which I simply call “maths fundamentals”. That is, all the maths which is required to become a great AI researcher. The second group of topics will be on AI literature.</p>
+
+<p>Maths fundamentals is beyond the school-level mathematics. Subjects in maths fundamentals are linear algebra, probability, optimisation and other miscellaneous topics. Each subject in itself is a group of topics, and hence there will be a series of blogs for each subject. And then I will be writing a series of blogs on AI literature.</p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>This is the first blog in the series of linear algebra (LA) for ML blogs. This blog is about -</p>
+
+<ul>
+  <li>Why is LA important?</li>
+  <li>Spirit of LA.</li>
+</ul>
+
+<h3 id="why-is-la-important">Why is LA important?</h3>
+
+<p><em>I have planned to write a dedicated blog on the importance of LA. I will link it here once I complete writing it. Below is a short overview of what I currently know about this.</em></p>
+
+<p>LA is important because of these reasons:</p>
+
+<ul>
+  <li>It is easy to find a linear relationship. There is only one solution, you just find that particular solution. That is, there is only one way input and output can have a linear relationship. On the other hand, there are many ways you can find a non-linear relationship between them.</li>
+  <li>It is highly interpretable. You know which variables impact how much to the result.</li>
+  <li>There are many real-world phenomena which are inherently linear. E.g., the first half of the computation by a biological neuron is linear. And this is why artificial neurons are the way they are – a linear function followed by a non-linear function.</li>
+</ul>
+
+<h3 id="spirit-of-la">Spirit of LA</h3>
+<p>Any subject has a particular spirit which is the cause of the origination of all the concepts of that subject. In this section, I want to talk about the spirit of LA and how every concept of LA originates from that spirit.</p>
+
+<p>When you know why the particular concept exists, then you don’t need to memorise it. Because when you know why a concept exists, then this “why” triggers your problem-solving mindset. And since you have read that concept at least once, this helps you easily solve that problem for yourself. You become the creator of that concept. That concept feels natural to you, and you can create it on the fly whenever you forget the details of it. “Natural” here means that you know the concept without needing to memorise it, and you just need a way to bring it to your awareness.  And that way is to know the problem itself, i.e., why that concept exists.</p>
+
+<p><em>Working on the below grey colored text, which I will move to a dedicated blog.</em>
+<span style="color: grey;">The whole subject becomes a graph where nodes are concepts (or solutions) and edges are ‘why’ questions (or problems). And every node can be traced back to a root node, which is the spirit of the subject. And as you move towards the root, concepts become easy to understand. And the root concept, the spirit, is the easiest concept. To get the feel of its easiness, consider the concepts of addition, subtraction, etc., they are so easy that they are hard to forget.</span></p>
+
+<p><span style="color: grey;">Once you understand the root, then you will naturally understand all the concepts. What this means is that you do not need to memorise all the concepts, either you will know them by heart, or if you do not remember them, then you will be able to recreate them on the fly.  After understanding the root, you will know which problems originate from it, which triggers your problem-solving mindset. That is, you will begin to solve the problem for yourself, you will begin to find the concept which solves this problem. And if you also read the solution (the concept which actually connects the edge) from some resource like a book, then it becomes easy to solve the problem yourself and arrive at that concept. Similarly, from that concept, the same process repeats. You will know the problem originating from this concept, and then you will solve it. By repeating this process, you will recreate all the concepts of that subject.</span></p>
+
+<p><span style="color: grey;">And later on, whenever you are stuck with some problem, you do not need to remember its solution, you can create the solution on the fly. You will create it easily because you will have some vague memory of the solution. You will start from whichever node you remember and build a solution for that problem. And if you do not remember intermediate nodes to that solution node, then you will definitely remember the root node, from where you can build your solution by first building the intermediate nodes.</span></p>
+
+<p><span style="color: grey;">When you look at the subject as such a graph, then the whole subject looks like one unit. That is, every concept is coherently connected to each other. When you try to create the graph for yourself starting from the root node, you will know that the rest of the nodes are the only way one could create the graph of the subject.</span></p>
+
+<p>While reading the Cherney et al. LA book, I found the spirit of LA, which they have distinctively highlighted.</p>
+
+<blockquote>
+  <p>“LA is the study of vectors and linear functions.” [cite Cherney et al. LA book]</p>
+
+</blockquote>
+
+<p>A function is a <em>linear</em> function if it follows this:</p>
+
+\[T(u+v) = T(u) + T(v)\]
+
+\[T(cu) = cT(u)\]
+
+<p>where \(c\) is a scalar.</p>
+
+<p>What I currently think is that even the concept of “vector” stems from the concept of “linear function” (also called “linear map”, “linear mapping”, “linear transformation” or “linear operator”).</p>
+
+<p>So, “linear function” is the spirit of LA, or it is the root concept of LA which defines LA. From “linear function”, all the concepts of LA originate but in the form of a tree data structure. That is, there are some concepts, namely “vector”, “vector space” and “matrix”, which directly originate from the root and hence are at the first level of depth from the root. A vector is nothing but the input or output of a linear function. A vector space is nothing but the space of all possible inputs or the space of all possible outputs. And a matrix is one way to represent a linear function, or it is a way to represent a collection of vectors.</p>
+
+<p>Then from the first level, concepts originate which are at the second level of depth from the root. Concepts at this second level are eigenvector, eigenvalue, determinant, SVD, PCA and all other concepts of LA.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note:- This blog is under active development. I am currently reading a book titled “Linear Algebra” by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete.]]></summary></entry><entry><title type="html">Two Ramps - A path towards becoming an AI researcher</title><link href="http://localhost:4000/blog/2025/11/02/two-ramps-to-AI-mastery/" rel="alternate" type="text/html" title="Two Ramps - A path towards becoming an AI researcher" /><published>2025-11-02T00:00:00+05:30</published><updated>2025-11-02T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/02/two-ramps-to-AI-mastery</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/02/two-ramps-to-AI-mastery/"><![CDATA[<h3 id="requirements">Requirements</h3>
+<p>I am preparing myself to become an AI researcher. And I know what it is mean to be a great researcher and how to become one. Because until now I have read many papers, took many courses and worked on many projects. And when I introspected, I came to know how exactly I am lacking in order to master AI and become a researcher. Now I know how exactly I should learn. So, I am starting from again from zero but this time I know that I will master AI once I complete my learning. This situation of mine gives me so much leverage in creating a great educational content because I will be writing blog while I myself learning so I will know how I understood a concept, what reasoning I followed to understand a concept, since this will be fresh in my mind, I will be able to write about it.</p>
+
+<p>Starting from zero means starting from mastering maths fundamentals and then mastering AI literature.</p>
+
+<p>There are two steps.</p>
+<ul>
+  <li>First, is to master ML maths fundamentals (LA, prob etc.).</li>
+  <li>Second, is to master AI literature.</li>
+</ul>
+
+<h3 id="about-maths-fundamentals">About Maths Fundamentals</h3>
+<p>I have a school level maths knowledge and maths fundamentals is beyond school level maths. I see maths fundamentals as nothing but a collection of tools or building blocks (like lego blocks). School introduced only some of these blocks and that too at an introductory level. But maths fundamentals for ML constitutes all or most of the blocks and that too at advanced level. I won’t define what exactly I mean by blocks or tools. I have a vague sense of what I mean by blocks. But I am sure it will become clear as I will write about them in the future blogs.</p>
+
+<p>There are some ordering among these blocks from basic to advanced. That it, advanced blocks depend on basic blocks. And then there is ordering among the subjects of maths fundamentls, i.e., prob depends on LA etc.</p>
+
+<p>Just how, one can smoothly go from one level to another by going through a ramp. Similarly, I plan to write a series of blogs on maths which will act like a ramp. That is, going through this series of blogs would be like going through a ramp which connects school-level knowledge to a level of ML maths fundamentals mastery. This ramp like series of blogs would assume that you are at a level where you have only school-level knowledge. And this smooth ramp ends at a level where one is a master of ML maths fundamentals. By going through this series of blogs, you will <strong>smoothly gain all the maths knowledge or understanding required to become a great AI researcher</strong>. You will know all the tools required to understanding or improve existing AI algorithms, or create new new and better AI algorithms. If apart from the subjects mentioned in maths fundamentals, some new maths subjects becomes important for AI than I will be considering that subject too. Using the terms AI and ML signifies looking at a single thing from two perspectives. AI term signifies that you are talking about a concept and ML term signifies that you are talking about the algorithm that implements the AI concept.</p>
+
+<p>This series of blogs is nothing but a series of multiple subseries. That is, this larger series of blogs will first contain a series of blogs on linear algebra, then a series of blogs on calculus and optimization, and then a series of blogs on probability and statistics.</p>
+
+<p>Going over a gentle ramp is as simple as walking over it. In the same spirit, every next blog will be simple to understand, once you have understood previous blogs in the series. Just like we have innate skill of <em>walking</em>, in the same manner, we have innate skill of <em>problem solving</em>. Going one step forward is natural for you, you just need to take one step. Similarly, if you are presented with a problem which you could solve with your existing knowledge, then you would be easily able to solve it. Every next blog in the series will deal with such problem and its solution. After understanding previous blogs, you will have enough knowledge to naturally solve that problem and create a solution for yourself.</p>
+
+<p><strong>Softness</strong> of a ramp is because of two reasons:</p>
+<ul>
+  <li>first the ordering of tools is from basic to advance. You will be able to understand first tool with only school level knowledge. And then each subsequent tool will be easy to understand, from your knowledge of previous tools.</li>
+  <li>second is that you will be utilizing your problem solving skills.</li>
+</ul>
+
+<p>Also mention that I will be writing these blogs in <strong>iteration</strong>.</p>
+
+<h3 id="about-ai-literature">About AI Literature</h3>
+
+<h3 id="two-ramps">Two Ramps</h3>
+<p>To become an AI researcher I have to satisfy the requirements. As I mentioned earlier, I will use blogging to learn. Let me mention here the exact plan about how I will be preparing to become a researcher.</p>
+
+<p><strong>Smoothness in learning any topic comes when you know why that block/tool exists and you have the ability to create that block/tool for yourself.</strong>
+    That is, when you know the problem for which that block exists, you try to solve that problem for yourself and then when you read the description about the tool. It will make sense, you will think that this is how this tool must be.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>And most of the time, our intuition will give us vague description of how that tool must be before even looking at the real description of it from any given source. And then when we understand the real description before further solidifying (formulating) our own intuition (because it may take time), we will know that this is how I was trying to create that tool, that description will feel natural, and you will be able to naturally understand that description. 
+
+So, instead of passively understanding any topic, we are actively understanding it. That is, we are trying to recreate that tool using our own problem solving skills and also taking the help of the real description so that we can quickly recreate it.
+
+Once we become the creator, we will know our tool comprehensively, i.e., when to use it, how to use it, what it is doing etc.
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Requirements I am preparing myself to become an AI researcher. And I know what it is mean to be a great researcher and how to become one. Because until now I have read many papers, took many courses and worked on many projects. And when I introspected, I came to know how exactly I am lacking in order to master AI and become a researcher. Now I know how exactly I should learn. So, I am starting from again from zero but this time I know that I will master AI once I complete my learning. This situation of mine gives me so much leverage in creating a great educational content because I will be writing blog while I myself learning so I will know how I understood a concept, what reasoning I followed to understand a concept, since this will be fresh in my mind, I will be able to write about it.]]></summary></entry><entry><title type="html">Why linear algebra is important for ML?</title><link href="http://localhost:4000/blog/2025/10/30/why-LA-for-ML/" rel="alternate" type="text/html" title="Why linear algebra is important for ML?" /><published>2025-10-30T00:00:00+05:30</published><updated>2025-10-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/30/why-LA-for-ML</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/30/why-LA-for-ML/"><![CDATA[<ul>
+  <li>explain how LA came to use in ML and AI.</li>
+  <li>McCulloch-pitts was the first artificial model of biological neuron, and it was linear because that is close to how real neuron works.
+    <ul>
+      <li>references:
+        <ul>
+          <li>first lecture of CMU DL course</li>
+          <li>https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf</li>
+          <li>https://en.wikipedia.org/wiki/Artificial_neuron#Biological_models</li>
+          <li>https://chatgpt.com/share/6903547e-4e64-800e-a631-73a37433dc41</li>
+          <li>https://en.wikipedia.org/wiki/Neural_circuit#Connections_between_neurons</li>
+          <li>https://en.wikipedia.org/wiki/Synaptic_weight
+  weight in biological neuron.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Why linearity?</p>
+<ul>
+  <li>https://math.stackexchange.com/questions/2871711/what-about-linearity-makes-it-so-useful</li>
+</ul>
+
+<p>Two conclusions I came to:</p>
+<ul>
+  <li>First it is easy to find linear relationship, e.g., least squares or PCA. There is only one solution, you just find that particular solution. That is, there is only one way to establish linear relationship. On the other hand, there are many ways you can find the non-linear relationship.</li>
+  <li>Second, it is highly interpretable. You know which variables impact how much to the result.</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[explain how LA came to use in ML and AI. McCulloch-pitts was the first artificial model of biological neuron, and it was linear because that is close to how real neuron works. references: first lecture of CMU DL course https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf https://en.wikipedia.org/wiki/Artificial_neuron#Biological_models https://chatgpt.com/share/6903547e-4e64-800e-a631-73a37433dc41 https://en.wikipedia.org/wiki/Neural_circuit#Connections_between_neurons https://en.wikipedia.org/wiki/Synaptic_weight weight in biological neuron.]]></summary></entry><entry><title type="html">Open Questions For Me</title><link href="http://localhost:4000/blog/2025/10/29/open-questions-for-me/" rel="alternate" type="text/html" title="Open Questions For Me" /><published>2025-10-29T00:00:00+05:30</published><updated>2025-10-29T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/29/open-questions-for-me</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/29/open-questions-for-me/"><![CDATA[<p>I do have vague or superficial understanding of answers of these questions but I do not have concrete understanding.</p>
+
+<ul>
+  <li>Why neural networks (NN) need to be non-linear?</li>
+  <li>How NN are non-linear?</li>
+  <li>More broad question - Why current AI is the way it is?
+    <ul>
+      <li>It requires understanding the evolution of algorithms, about what failed at various stages of evolution? And what succeeded and evolved further?</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[I do have vague or superficial understanding of answers of these questions but I do not have concrete understanding.]]></summary></entry><entry><title type="html">Setting The Tone</title><link href="http://localhost:4000/blog/2025/10/28/setting-the-tone/" rel="alternate" type="text/html" title="Setting The Tone" /><published>2025-10-28T00:00:00+05:30</published><updated>2025-10-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/28/setting-the-tone</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/28/setting-the-tone/"><![CDATA[<p><span style="color: red;"><em>This blog is UNDER PROGRESS. I have overspent the time for writing this blog. And now I feel like I should first work on some more important blogs, and then I will continue this not-so-important blog. The first and last parts are almost complete. You will find grey-coloured text that is either redundant or contains ideas which I am yet to integrate with the main text. And also you will find silly grammatical mistakes because of two reasons. First, I am still learning English. Second, the mistakes which I could have avoided but still committed because I wanted to write fast and hence avoided conscious grammar checking. Later, when I continue working on this blog, I will have to use a grammar checker tool for unavoidable mistakes.</em></span></p>
+
+<h3 id="prerequisite">Prerequisite</h3>
+<p>I have written a blog titled - <a href="/blog/2025/10/27/AI-is-maths-formulation/" target="_blank">AI - Mathematical Formulation of Intelligence</a>. This blog explains how AI is only possible by running maths equations in the computer, which motivates me and will motivate others to first master maths in order to do AI research.</p>
+
+<p>But this blog also answers three questions which will help provide some context for this blog. I have briefly explained the answers to this questions in this section below.</p>
+
+<h5 id="ai-vs-ml">AI vs ML</h5>
+<p>AI is a concept of computers having intelligence. And ML is a way (a type of computer algorithm) to implement that concept of AI or to make that concept a reality.</p>
+
+<h5 id="short-answer-to-why-i-want-to-become-an-ai-researcher">Short answer to why I want to become an AI researcher?</h5>
+<p>Currently, ML is only able to partially implement (which is called Narrow AI or ANI) the proper concept of AI which is Artificial General Intelligence (AGI). ANI is already super useful in some of the important applications, but <strong>safe</strong> AGI will be super super useful in all the applications from healthcare to all kinds of science. This fascinates me and motivates me to work on AI. AGI might be implemented solely via ML or via the hybrid of ML and Symbolic AI (another way to implement AI).</p>
+
+<h5 id="mastery-of-maths-is-required">Mastery of maths is required</h5>
+<p>To understand, create or improve AI algorithms, one must have good understanding of the required mathematics, which is linear algebra, probability and calculus. Let’s call the required maths as “maths fundamentals” of ML. Maths fundamentals is beyond the school level maths.</p>
+
+<h3 id="my-knowledge-of-maths-as-a-ml-engineer">My knowledge of maths as a ML engineer</h3>
+<p>I was good at school level maths. To <em>properly learn</em> maths fundamentals requires a <em>lot of effort</em> (atleast for me). And back then, I didn’t had <em>enough motivation</em> to put such efforts because with minimal efforts, I was able to acquire surface-level understanding of ML and maths fundamentals, which was enough to get a job as a ML engineer in an early stage startup.</p>
+
+<h3 id="decided-to-do-independent-research">Decided to do independent research</h3>
+<p>I decided to become an AI researcher towards the end of the second year of my job. I left the job. I tried to get in the good university but I could not. So, I decided to do independent research. I thought, as I prepare for the independent research, I might create good research profile which opens the chance for me to apply again for the desired graduate program or otherwise I would continue doing the independent research.</p>
+
+<h3 id="learning-maths-systematically-for-the-first-time">Learning maths systematically for the first time</h3>
+<p>To do research, I <em>had to</em> first master the maths fundamentals. So, for the first time I had motivation to even try to study maths systematically. After this short period of learning maths, I again ended up having surface level understanding but much better than before. This was the longest time I ever spent on learning maths.</p>
+
+<h3 id="gaining-motivation-by-understanding-literature">Gaining Motivation by understanding literature</h3>
+<p>This time, I had better motivation. But not enough to learn it properly. Because I was not sure - How exactly these mathematical tools I was learning e.g. solving linear system of equations, vector space, eigen vector, SVD, probability distributions etc. work together in harmony such that to induce intelligent behavior of the algorithm? And also how researchers came up with the idea of which tools to combine and how to combine at the first place.</p>
+
+<p>After my failed attempt of understanding the maths properly, I got this idea of finding the subarea within AI which excites me a lot. That subarea in which I would love to do research and then <em>understanding papers</em> of it. I would have more than enough motivation to properly understand those papers. And I have to do this anyway, because that is part of the preparation to become an AI researcher. I thought of using this excitement of working on that subarea to drive me to prepare for research (top-down approach of learning anything).</p>
+
+<p>Without mastering the maths fundamentals, I cannot expect to understand research papers. The <em>only difficult part of understanding a paper is to understand answers of above questions</em>. My plan was to understand those answers based on my existing maths knowledge. So that atleast I have superficial understanding of those answers. I would know that . That is, I would know the importance of mathematics for AI not because someone has told me that they are important. But because I have seen how these maths tools are used to induce intelligence. I would know that maths is indeed inducing the intelligence and nothing else. I would know that whatever intelligent behaviour, algorithm is showing is only because computer is running the mathematical functions. I would clearly see the end goal of learning the maths fundamentals, i.e., I will be able to know AI algorithms in and out (answers to above questions), once I master maths.</p>
+
+<p>Knowing all these, would give me <em>enough motivation to understand those maths tools properly</em>, which in turn help me properly understand those answers. E.g., understanding each tool would help me understand how they work together such that to induce intelligent behavior of an algorithm. Once those answers are understood, then understanding the paper is very easy.</p>
+
+<p>When I understand a paper, I gain two things: I understand maths corresponding to that paper and how those maths topics are used to create that AI algorithm. As I understand more and more papers of that subarea, both of these understandings will grow. First, I will understand more and more topics of maths fundamentals. Second, I would be gaining the ability to use those tools for my own AI research, (i.e. ability to use maths to better understand or improve existing algorithm, or create new algorithms). So, understanding papers make me gain all the required knowledge and skills for becoming an AI researcher.</p>
+
+<p><span style="color: grey;">There are inspiring papers which gives you potential ideas of creating an better AI algorithm</span></p>
+
+<h3 id="defining-research-interest">Defining research interest</h3>
+<p>I then began to properly define the subarea of AI which excites me. I looked at open problems in AI and I came to know the limitations of Deep Learning (a special type of ML) algorithms like robustness, continual learning, high sample complexity, interpretability etc.</p>
+
+<p>Since computer vision is my favourite among other subfields of AI, so looking at the potential solutions accordingly, lead me to the seminal paper by Francesco Locatello, which proposed slot attention for object centric learning. From that paper, I came to know about object centric learning and corresponding research of Yoshua Bengio, Bernhard Scholkopf, Geoffrey Hinton and others. And finally I came to know about compositionality and causality, the subarea which excites me most. These researchers were trying to fix limitations of deep learning algorithms by inducing compositionality and causality. And among other papers, slot attention paper was the key paper in this area.</p>
+
+<h3 id="understanding-research-papers">Understanding research papers</h3>
+<h5 id="recent-papers-relies-on-previous-papers">Recent papers relies on previous papers</h5>
+<p>I tried to read their recent papers but they were advanced and not an easy read for me. Although the papers were based on maths fundamentals (LA, prob, and calc) but they combined maths tools in such a complicated manner and then gave answers to the above questions with the help of jargons and cited the papers which explains those jargons. Or created new jargons whose explanations was again based on existing jargons. Citations also explains jargons with the help of other jargons.</p>
+
+<p>[explain what I mean by jargons]</p>
+
+<p>Authors use jargons because paper needs to be written in limited pages and with jargons, a lot of information can be conveyed in little space (high information density).</p>
+
+<p>I knew maths jargons but not the ones which are related to the subarea I selected. [Give some exmaple of jargons like representation, model, loss, latent, slot, etc. by reading slot attention paper]</p>
+
+<h5 id="my-plan-of-understanding-the-evolution">My plan of understanding the evolution</h5>
+<p>Recent papers hide answers I was looking for, behind jargons and corresponding citations. As I was jumping from one paper to another, I got this idea of understanding all citations from which recent papers refers jargons from. That was the only way to understand recent papers because it is hard to find a course or lectures which would help me explain the papers I was trying to understand. Even if there is a course, it would rely on jargons to make the explanation concise. Now, citations will also depend on their own citations. This problem of understanding all the required jargons could only be solved by understanding all the ancesters of the recent papers in the chronological order.</p>
+
+<p>To this end, I thought of finding the sequence of developements which leads to current research. Research means extending the existing knowledge about any subject. Every research paper extends the existing knowledge of the subject by proposing new knowledge. And it proposes this knowledge by relying on the existing knowledge developed by previous papers. And this is how knowledge of any subject develops over time. My idea was to first find the sequence of papers in chronological order which has developed the knowledge of the subarea of my interest over time. And then to understand each paper in that order. So that I have enough knowledge (knowing all the required jargons) to understand recent papers.</p>
+
+<p>In this way, I could understand all the jargons of that subarea in a smooth manner, without any conflict because for every paper you are understanding, you know all the jargons on which that paper relies on. Authors write papers by keeping their potential readers in mind. For papers in AI, authors would assume that most of their readers would be AI researchers or students of computer science field and the readers have already gone through previous papers from where they refer jargons. Given this assumption in mind, authors provide enough explanation of knowledge they are proposing, so that most of their readers could understand it properly and easily. If the knowledge authors are proposing can not be explained through jargons, then they would provide enough explanation (by using only mathematical jargons, which is fine for me and that is what I am looking for, so that I can “connect” the mathematics with “how” it has intelligence inducing power, which AI jargons were blocking that connection. I would not understand the “how” yet but i will know that math can induce intelligence and is indeed doing it and is the only way to do it.) of the mathematics of the algorithm so that readers could understand the paper if they have already mastered maths fundamentals (would assign some name to that explanation which will be new jargon).</p>
+
+<p><strong>The assumption I had in my mind is that knowledge proposed by each research paper is very easy to understand when you have already understood previous papers on which this paper is based on and you are familiar with the larger field in which research area of this paper lies.</strong> Because this is what the role of any research paper is to properly explain what they are proposing, so that research community could understand and build upon it.</p>
+
+<p>So only challenge is to understand the first paper. Once it is understood, then every next paper in the sequence is easy to understand.</p>
+
+<p><span style="color: grey;">AI is a research area within a larger field of computer science. Your knowledge of the AI will grow just like how computer science researchers grew their knowledge by reading research papers in chronological order.</span></p>
+
+<p>[lets talk about the first paper]
+But first paper will also be easy to understand because it is the paper which is starting a new research area. Which has two implications. First, knowledge it will be proposing will be basic. And second, it could not rely on jargons to present the knowledge because no jargons already exist. Second implication is obvious, let me elaborate the first one.</p>
+
+<p>First one is especially true in AI research. Authors of the first paper got inspired from human intelligence which is powered by brain and thought of putting this intelligence in a computer. They knew that brain is composed of large number of highly connected neurons. Function of a single neuron is very simple and human intelligence arise from complex interconnection of these simple elements. Before researchers could simulate the function of human brain, they have to <em>acquire knowledge of how to simulate a single neuron in a computer</em>. Once this is done, then only they can try to figure out how to make multiple neurons work together. Single neuron was easily simulated in a computer with a school level mathematics because it has simple function.</p>
+
+<p>So, first paper would be easy to understand because it would be based on school level maths and it would explain the knowledge it is proposing without using any jargon. And it would be introducing jargons like “neuron”, “learning” for the first time to a larger field of computer science. Next natural extension of this knowledge by subsequent papers, is to acquire the knowledge of how a network of multiple neurons can learn to do simple tasks (just like how humans learn to do tasks).</p>
+
+<p>[introduce bm and hn here, and connect them with the above para by saying that these two algorithms proposed different learning algorithms - associative memory and distribution learning, or may be BM is an advanced form of HN]</p>
+
+<p>[Connect the below para with HN and BM, how these models are inspired from stat mech and not directly on brain.]
+<span style="color: grey;">Today we do not know, how exactly brain induces intelligence, so back then there was even less knowledge about human intelligence. But they atleast knew that brain is composed of large number of highly connected neurons. They knew how a single neuron works but they didn’t knew how exactly they are connected to each other.</span></p>
+
+<p><span style="color: grey;">Research in (any area?) always moves from simpler to more complex knowledge. Where first paper proposes the basic knowledge of AI (could be a basic algorithm or just concept), then each next paper improves the knowledge of AI by either improving the existing algorithms or explaining them better or proposing newer and better algorithms. For e.g., AI research began with perceptron (single neuron) algorithm as first AI algorithm. And then it evolved in this sequence - Multi Layer Perceptron or MLP (multiple neurons), Deep Neural Network (large number of hidden layers), and now LLMs (very very deep neural networks).</span></p>
+
+<p>Understanding chronology of papers has several advantages. You not only understand the whole AI literature. But you also understand the maths fundamentals. Both are required for becoming an AI researcher. Maths fundamentals gives you tools. And AI literature tells you how to use those tools to implement the narrow AI and also gives potential ideas of how full concept of AI (AGI) could be implemented.</p>
+
+<h5 id="chronology-of-papers">Chronology of papers</h5>
+<p>For the subarea of my interest, these are the sequence of papers (in chronological order) I found: Boltzmann Machine (BM), Restricted BM, Variational Auto Encoder (VAE) and Slot Attention. All these were the methods on which the research of compositionality in Computer Vision was based on.</p>
+
+<p>But later I found out that these were not the only papers in the chronology. I found these papers because these papers proposed some “important” knowledge, hence they became more popular and influential, and easy to find. <em>Only after reading them</em>, I came to know that there are more “unimportant” papers in between each two consecutive papers, i.e., RBM depends not only on BM paper but also on other papers between them. More on this later.</p>
+
+<h5 id="bm-as-a-starting-point">BM as a starting point</h5>
+<p>BM relies on two papers, one is Hopfield Network (HN) paper by John Hopfield and other is simulated annealing paper by Kirkpatrick et al. HN is a model for associative memory. And simulated annealing algorithm is based on Statistical Mechanics (or in short “Stat Mech”, a branch of physics) and it is for combinatorial optimization.</p>
+
+<p>HN paper relies on the knowledge of perceptron and a concept of energy from statistical mechanics. HN is a successor of perceptron because it proposed a learning algorithm for a network of neurons. (?But) it could only allow a network to do simple task of memorizing a particular set of items and to retrieve any one of that item given a partial content of that item (associative memory). BM was generalisation of HN where it could learn the whole distribution just like humans which allows it to retrieve any item in the distribution, given the partial content of that item.</p>
+
+<p>BM is a gateway into the research subarea of my interest. Or one can say BM is at the root or at the foundation of this research because BM was the first paper which proposed a learning algorithm for a network of neurons, which allows the network to learn to perform some of human-like tasks. That is, it could learn the data distribution which allows the network to interpret a given image, complete a partial image, classify a image and generate an image. It was a breakthrough.</p>
+
+<p><span style="color: grey;">BM introduced the ideas (like latent variables or hidden units and their learning algorithm)</span></p>
+
+<p><span style="color: grey;">Also, I later came to know that apart from the gateway to the current research, it is also a gateway to deep learning research in mid 2000’s. In 2006, Hinton showed that RBM (a form of BM - Restricted BM) can be used to train “deep” neural network in a better way. Before this paper, training deep network was very difficult and most of the research community was doubtful about the success of deep learning. But this paper gave new hope to the deep learning research community. After this paper, interest in deep learning only grew exponentially because from year to year, it only became better and more successful.</span></p>
+
+<p><span style="color: grey;">The goal of BM was so ambitious as it tried to solve a broader problem of computer vision - classification, completing the partial image, imagination and understanding the content of the image. In theory, it could do all that but it was very slow and not scalable.</span></p>
+
+<p><span style="color: grey;">And what is more interesting is that BM was proposed in 1983, i.e., during the time when AI research was in the nascent stage. At that time, research in AI was new and risky, so there were few AI researchers and hence fewer AI papers.</span></p>
+
+<p><span style="color: grey;">Main concept of Hopfield Network (HN) for associative memory is so simple that anyone with school level maths can understand it. And simulated annealing is just the application of metropolis algorithm, a basic version of Markov chain Monte Carlo (MCMC). MCMC is a topic of applied mathematics and it is one of the most popular method, which has many applications. Which means, there are plenty of resources explaining this. 
+</span></p>
+
+<p><span style="color: grey;">There are many advantages which make the BM paper, the best paper to start with. <em>First advantage</em> was that, BM paper proposed a new AI algorithm, i.e., it didn’t proposed any incremental developement and it didn’t relied heavily on previous AI papers. It relied on the concepts of Hopfield Network (HN)(Hopfield, 1982) and on the concepts of Statistical Mechanics (or in short “Stat Mech”, a branch of physics). So, I had to first understand the HN paper and concepts of Stat Mech. Which is comparitively much easier than understanding many concepts AI paper of today relies on. This is the advantage because of picking an “old” paper (In 1980s, research in AI was new and risky, so there were few AI researchers and hence few AI papers).</span></p>
+
+<p><span style="color: grey;"><em>Second advantage</em> was that BM paper proposed a new AI algorithm. So, authors explained the algorithm in detailed manner. Because of first and second advantage, breaking the BM paper down and finding the relatable maths topic was easier.</span></p>
+
+<h5 id="three-blogs">Three Blogs</h5>
+<p>[Mention the difficulty of understanding HN and BM paper]
+<span style="color: grey;">i.e. HN paper not only depends on perceptron and neuron but also on stat mech. Similarly, BM paper not only depended on HN paper but also on simulated annealing paper. But I thought that once I understand BM, it will be easy for me to understand rest of the papers in chronology.
+</span></p>
+
+<p>To understand BM, I had to first understand HN paper and some simple concepts of StatMech. To comprehensively understand these topics, I decided to write and start my first blog site. Because as we know, in order to explain something <em>properly</em>, one should better know it. I wrote my first blogs on HN and Stat Mech and then a blog on BM. Explaining (by writing) indeed helped my understanding. This is for the first time, I took a paper seriously and tried to understand every part of it.</p>
+
+<p>Full understanding comes when you see it working, so I implemented experiments in BM and HN paper. There were multiple experiments in both the papers to show the capabilities of each technique. While there were no exact details about how those experiments are implemented, I implemented them based on my understanding.</p>
+
+<p>For HN experiments, there was a very slight difference between the results I obtained vs results mentioned in the paper. For BM, I was able to perfectly reproduce all (total three) experiment’s results except for the third one. I was inefficient in terms of finding the right set of hyperparameters of the algorithm for each experiment. Since the writing part of the three blogs and implementations of experiments were almost done. And I already spent a lot of time on these blogs. And I was not sure how much time the last experiment would take which made me feel stuck. So, I didn’t gave enough time to the third experiment of BM. And decided to move on to the next key paper and come back to these three blogs later on.</p>
+
+<h5 id="moving-on-to-next-paper-rbm">Moving on to next paper: RBM</h5>
+<p>Next key paper, I began to understand was on Restricted Boltzmann Machine (RBM). After spending some time (towards the end of June, 2025), trying to understand RBM I realized that this approach of trying to understand required maths by understanding the key papers in chronological order is not working.</p>
+
+<ul>
+  <li>
+    <p>I had already went through long challenging journey of working on these three blogs - HN, BM and Stat Mech.</p>
+  </li>
+  <li>
+    <p>While reading RBM paper, I realized reading and understanding papers is not efficient.</p>
+    <ul>
+      <li>It involves understanding the maths</li>
+      <li>and understanding experiments by running them.</li>
+      <li>maths presented in the paper is not very detailed, you have to spend time figuring it out (just like occurrence of sigmoid function in BM paper was not apparent).</li>
+      <li>some of the jargons have no corresponding citations because they are obvious for the potential readers but not for me.</li>
+      <li>Researchers like Hinton try different methods and all of them do not get popular by themselve. Some of the methods when combined with future methods, comes to relevance. This is what I meant when I say “unimportant” papers. Such papers are not impactful by themselves, hence not popular and would be unknown to me and hence I would not mention such papers in the chronology. RBM relied on such unimportant papers. So, I had to first understand those papers.
+        <ul>
+          <li>There are new experiments. And comparison with other models, while there was no such comparison in BM paper.</li>
+          <li>There are atleast four unimportant papers which RBM relies on. Each applies RBM to a particular application of Hand written digit classification, face recognition, to time series and RL.</li>
+        </ul>
+      </li>
+      <li>90% of the RBM paper was new to me. It proposes an almost new learning algorithm. Which is opposed to what I was assuming. I thought BM was a gateway which once entered, would allow me to understand rest of the papers in the chronology.</li>
+      <li>full understanding of method presented in the paper comes from running the experiment. Experiments uncover hidden insights of the algorithm. It gives you understanding which would have been hard for you to figure out. By running the experiments for yourself, you learn how to set hyperparams, you learn how to implement algorithm so that it just works because implementing algorithm which works is not straightforward. If the algorithm does not work, then by looking at the result, you should know what’s the problem and be able to fix it (e.g., BM stucking in local minima, and solution was noisy update). Paper (atleast older paper like BM) only contain main parts of the algorithm, rest of the part is for you to figure out based on your knowledge.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><span style="color: grey;">Since, RBM is an upgrade over BM, I thought reading a paper on RBM would be familiar but 90% of the paper was unfamiliar to me. I escaped a one and half decade of research from 1985 to 2001. Many different kind of AI research happened in this period. There was POE, Mnist etc. This paper didn’t felt as natural to me as BM. May be because I didn’t had any context of the research I missed in 1.5 decade. But RBM only uses the structure of the BM. That is, it makes many of the things of BM irrelevant and adds more new stuff to it.</span></p>
+
+<p><span style="color: grey;">Meaning, understanding RBM again would take significant time. And then I have to repeat same thing for other papers. I realized that if i follow a plan of evolution, I would have to understand many papers than I thought. And if I skip papers in between than I wont be having comprehensive, all round understanding of the literature, I will only be having understanding from one perspective which is not enough. With the many faces of the AI literature, I will be only looking at its one face.</span></p>
+
+<p><span style="color: grey;">RBM relied on Gibbs sampling or sequential update, POEs and how rbm is a POE (freund et al)</span></p>
+
+<p><span style="color: grey;">This approach [understanding chronology] failed because I didn’t considered the fact that number of AI researchers per year would grow because of the popularity of successful algorithms like Boltzmann Machine and others. And hence number of AI papers per year would also grow with time. Which means that every next key paper would rely not only on the paper I already understood but also on the other unimportant papers </span></p>
+
+<p><span style="color: grey;">RBM was first introduced by Paul Smolensky in 1986. In 1992, Freund and Haussler wrote a paper, giving RBM a different perspective. They proposed that RBM is infact a Product of Experts (PoE) model, which was not apparent. Then in 2002, successful training algorithm called Contrastive Divergence (CD) for RBM was proposed in a paper by Hinton in 2002.</span></p>
+
+<p><span style="color: grey;">This approach failed because I thought next key paper would completely depend on the previously understood paper. But it was not like that. Although RBM is an upgrade over BM and hence dependent on BM, still it was not straightforward for me to break RBM paper down and find the relatable maths topic.</span></p>
+
+<p>While working on RBM, it occurred to me that I am very inefficient in terms of understanding papers (taking long time to properly understand them). So, it would take me hell lot of time to reach to current research through this route.</p>
+
+<h5 id="explosion">Explosion</h5>
+<p>I thought there was only one starting point of the evolution, but in fact, it looks like different starting point and each evolving differently and sometimes intersecting in one of the paper in middle. Or may be BM has spawned different research paths.</p>
+
+<p>Also it is difficult to find most natural successor of a paper. The way I was finding the papers, was to looking at the papers published by Hinton. And reading those papers and then following the references. 
+Or other way was by digging the recent papers, so by this approach, RBM was the natural successor.</p>
+
+<p>different researchers working on different aspect of AI in parallel:</p>
+<ul>
+  <li>different learning algorithms for unsupervised learning - helmholtz machine, wake sleep algorithm, POEs, BM, RBM, sparse coding etc</li>
+  <li>supervised learning via backpropagation algorithm</li>
+  <li>difficulty of training NN, analysing NN</li>
+  <li>CNN</li>
+  <li>Bayesian Network and PGM</li>
+  <li>Kernel Machines</li>
+  <li>Representation learning - Distributed representation,
+    <ul>
+      <li>non linear dimensionality reduction</li>
+    </ul>
+  </li>
+  <li>Minimum description length</li>
+  <li>Meta learning</li>
+  <li>difficulty of learning long term dependencies and LSTM</li>
+  <li>language model</li>
+  <li>speech processing</li>
+</ul>
+
+<h3 id="finally-enough-motivation">Finally enough motivation</h3>
+<p>[Some of the points mentioned here, are already mentioned in the above section “Moving on to next paper: RBM”]</p>
+
+<p>While understanding RBM paper, I decided to master maths first. THESE ARE REASONS OF NOT continuing paper understanding and mastering maths first.</p>
+
+<p>There are multiple reasons:</p>
+<ul>
+  <li>Understanding a paper takes time because it not only depends on previous key papers but also on other unimportant papers.</li>
+  <li>Implementing experiments in it, is another challenge. Because full algorithm is not mentioned and you have to figure out missing parts. Those missing parts are obvious for most of the potential readers like AI researchers. Missing parts include hyperparameters and some steps of algorithm. E.g., there was no proper description of implementation of noisy clamping in BM paper.</li>
+  <li>And by the time, I was reading RBM paper, list of key papers to understand, grew a lot. [Explosion section above]. That is, chronology of papers got extended as I came across more and more important papers. And each new paper which I was adding in the chronology, has multiple (unknown to me) unimportant papers on which that paper depends on.</li>
+  <li>Even after spending a lot of time understanding a paper, there are high chance that I won’t have comprehensive understanding. Because there are no clear mentioning of these and these topics of maths, which once mastered, will allow you to comprehensively understand that paper. I will only guess the required maths topics.</li>
+  <li>Finding a list of maths topics from a paper is cumbersome because I would have to parse the complex equations (all the maths topics are intermingled in one equation), which takes time.</li>
+</ul>
+
+<p>It is not easy to understand papers naturally without being good at maths. The top down approach of learning is hard because you have to figure out what maths topics are used by first reading the paper, struggling with the jargons, complex equations, struggling with partial or no proof of the equations, and then reading its citations. <strong>Main problem is that maths topics are not straight forwardly listed in a simple list, you have to mine that list by reading a paper and its citations</strong>.</p>
+
+<p>But after understanding BM and HN paper, and little bit of RBM paper, now I <strong>very well know that maths is indeed inducing intelligence</strong> which is <em>more than enough motivation</em> for me to first master maths fundamentals. Mastering maths first has several advantages.</p>
+
+<p>Mastering maths then would allow me to <strong>naturally</strong> know <em>how</em> exactly it is inducing intelligence. I have this idea of understanding things from ground up, so that I can understand all the papers efficiently, in and out, without any efforts. I very much realized that once I understand maths, I will have so much leverage to easily understand and implement every paper (bottom up approach). That is, if I read paper after mastering maths, every maths equations will make sense naturally, everything will just click to me. Because I would know the maths blocks or topics (e.g. array, vector, probability density function) very well which builds maths equations. Then, knowing the equation would be like knowing how to bring together already known maths blocks and how they interact to induce intelligence. This is the part, papers explain it well and hence it is easy to understand. Maths of AI algorithms is just the mix of different maths blocks. <strong>If you know maths fundamentals (all maths blocks) then understanding AI algorithms/papers is natural because you would have come up with that mix on your own if you had the same inspiration as the authors of the paper</strong>. So, everything now boils down to inspiration. You know all tools (all the maths blocks), you can use them (or mix them), it is just that you need that inspiration of how to mix them. E.g. neocognitron model (precursor of modern CNN) was inspired from the study of vision system of cats and monkeys.</p>
+
+<p>With good maths fundamentals, I will be able to imagine the algorithm running, hence it will also be easy to implement and debug. It will help me figure out the missing description of obvious parts of the algorithm or hyperparameters which authors didn’t mentioned in detail. I will have the intuition of what hidden insights would be uncovered when actually running the algorithm, differently in different experiments. This intuition will help me debug, if algorithm is not runnning the way I expect it to run. I didn’t had such intuition or could not imagine the algorithm running, while reproducing the experiments of HN and BM.</p>
+
+<p>Topics of maths fundamentals are well pre-structured in a list, so you do not have to mine this list. I now realized that understanding maths from bottom up is easy then understanding it from top down (first breaking down maths equations in papers) because you would be following books or courses as opposed to the series of papers. Introductory books and courses for maths fundamentals assumes that reader are well versed with school level maths only. And then explains maths fundmentals by keeping this assumption in mind. E.g., if you are reading an introductory book on Linear Algebra, then this book is nothing but an ordered list of topics which <em>naturally extends</em> the school level maths. <strong>Going through this list is like going over a gentle ramp which connects school level maths knowledge to a level of maths fundamentals mastery</strong>. If you understand LA topics in the order, right from the beginning, then for every topic (including the first one), you will have the required prerequisite to understand it. Which is unlike understanding papers in chronology because a given paper will almost always depends on some unimportant previous papers which you had not mentioned in the list and hence unknown to you. This is a recursive problem, i.e., that unknown paper will further depend on other unknown papers. Hence, paper reading feels so unnatural because there are so many unknown (to me) papers, a given paper depends on and it is time consuming task to read all of them.</p>
+
+<p><span style="color: grey;">Ever after giving this much time, I didn’t had comprehensive understanding of HN and BM. There were some insights of both these papers which was not straight forward for me. E.g., I could not visualize the high dimensional energy surface the way Hinton mentioned, he could understand that high dimensional loss surface has highly degenerate energy barriers or loss surface is in the form of ravine which helped him determine the step size for each weight. In HN, it was not straight forward for me to understand difference between binary and bipolar HN. How that factor of 0.15 occurs in HN. There were many things in HN which was not straightforward for me to understand and I would have to spend much more time to understand it properly.</span></p>
+
+<p><span style="color: grey;">There is so much thing to understand from one paper and you want to understand everything, which makes you feel that you are stuck at one paper. It is a bad feeling.</span></p>
+
+<p><span style="color: grey;">No proper understanding of loss surface in a simplest possible case of bm. It was good opportunity. Same for mcmc. Even after spending this much time, I didn’t understood this. Because I didn’t studied required maths topics. It was not apparent which maths topics to understand. I could figure out the maths topics from the equation but to understand the whole equation you may require other maths topic for its analysis. And authors would not mention that, because they are expecting that readers is well versed with the maths.</span></p>
+
+<p><span style="color: grey;"></span>
+<span style="color: grey;">I could have gone through every single paper in a “detailed” (including key and non-key paper, non-key papers are those which are not successful in themselves but successful paper depends on them.) chronological list of papers. But there would be uncertainty of when everything will just click (or when maths fundamentals and skills of implementing and reproducing papers will become strong) and paper understanding will be easy for me. This would be uncertain and also a grueling task. This gave me motivation to master maths fundamentals. Because once I master it, understanding and implementing “every” paper will be easy.</span></p>
+
+<p><span style="color: grey;">Understanding BM, and little bit of RBM realised me that learning maths is indeed superuseful. Because I would have comprehensive understanding of MCMC, rather than only knowing it from different aspects (for BM and RBM). If learning maths from papers, then there is a tendency of learning enough maths so that you can understand that paper, but not comprehensive understanding of maths.</span></p>
+
+<h3 id="blogging">Blogging</h3>
+<p>Another important source of motivation to study maths is blogging. I already used blogging to help me properly understand BM, HN and stat mech. After writing blogs on them, now I know for sure that <em><strong>quality</strong> blogging does help you comprehensively understand a topic</em>. And I strongly want to create quality blogs because it would be great feeling for me, if someone who is a beginner could gain comprehensive understanding of topics by reading my blogs.</p>
+
+<p>But that is one advantage. There is another equally important advantage. When you learn maths properly, it feels like an interminable task and not worthful in itself. Interminable because although there are finite number of topics in maths fundamentals. But number of topics are large and each takes significant amount of time when you learn it properly. So, it feels like never ending story. And to make it even worse, learning maths does not feel worthful, especially in the initial weeks. Because you are just simply reading and writing equations after equations. You have to wait for your service of solving real problems by AI research until you master the maths fundamentals. But <em>learning by blogging allows you to provide your service from today onwards and makes you feel worthful right away</em>. By creating quality blogs, it not only helps you master a topic. But it allows you to contribute your part in solving a social problem of education, by sharing your comprehensive understanding to the whole world for free (no distraction by ads, no paywall of any kind). If a human do not get benefitted by the blogs, AI would definitely get benefitted by using the blogs as high quality training data. So, you are doing service all the time. You are doing service now when you are learning and you will be doing service after learning maths by doing AI research.</p>
+
+<p>It is a <strong>win-win situation</strong> of learning the maths properly and doing service of education, both at the same time. Getting to know about blogging is a blessing.</p>
+
+<h3 id="finding-maths-resources">Finding maths resources</h3>
+<p>To start learning maths, I looked up for the potential resources and found some of the books just perfect.</p>
+
+<p>The books which I found most perfect are actually two book series by Sir Kevin Murphy. I have written a separate <a href="/blog/2025/10/22/ML-books-by-KevinMurphy/" target="_blank">blog</a> describing why these books are perfect. In brief, this book series is perfect because it comprehensively covers mathematics in total 630 pages, which is like a maths book within another book. <em>All the maths is just for ML, so there is no doubt whether any topic of maths is worth reading or not</em>. Once you <em>properly understand these 630 pages of mathematics, you will be able to easily understand almost all the AI literature</em>. And you do not have to jump from paper to paper, almost all of AI literature is covered in rest of the pages of these books.</p>
+
+<p>Second book is “Mathematics for Machine Learning” (MML) by Faisal, Ong, and Deisenroth <a class="citation" href="#deisenroth2020mathematics">(Deisenroth et al., 2020)</a>. As the name suggest, it covers maths for ML. I have not read it but it covers linear algebra in detail and this book is quite popular.</p>
+
+<h3 id="started-learning-maths-properly">Started Learning Maths Properly</h3>
+<p>In months of July and August this year, I read the Murphy’s book1 upto chapter 6. Chapter 2 to 6 covered the topics from probability, statistics, decision theory, and information theory (chapter 1 briefly explains ML). I have now much better understanding of these topics than I ever had. Chapter 7 is on linear algebra. Previously, I tried to study linear algebra multiple times, more than other subjects of maths fundamentals. So, instead of just reading chapter 7, I decided that now is the time to leverage the power of blogging (as mentioned above) to <em>comprehensively understand linear algebra and other subjects of maths fundamentals</em>.</p>
+
+<p>Plan is to write a detailed blog (with code) on every topic of maths fundamentals. I will be writing maths blogs by assuming school level maths as a prerequisite to properly understand a blog. <strong>By blogging, I want to increase my (and reader’s) school level understanding of mathematics to a level where we all have mastered maths fundamentals and become suitable for AI research</strong>.</p>
+
+<p>But before writing such maths blogs, I thought of writing these blogs:</p>
+<ul>
+  <li>A two part blog on what I have done till now, to prepare for AI research.
+    <ul>
+      <li>Part 1 - <a href="/blog/2025/10/21/statMech-hn-bm/" target="_blank">Statistical Mechanics, Hopfield Network and Boltzmann Machine</a></li>
+      <li>Part 2 is this blog - “Setting The Tone”.</li>
+    </ul>
+  </li>
+  <li>A blog (which I have linked in the prerequisite section) to motivate me and others to first master maths in order to become AI researcher.</li>
+  <li>A blog about how Murphy’s books are perfect (link in previous section).</li>
+</ul>
+
+<p>And some other blogs, which I think, I may post before writing maths blogs:</p>
+<ul>
+  <li>A blog about how now I look at machine learning. In one line, I look it as maths equations running on data to extract intelligence out of it in term of parameters (training). And then using these intelligence to achieve goals (inference). This blog will talk about ML in a very unique and general (covering all types of ML algorithms) way, showing how tools from “maths fundamentals” are used on “data” for training and inference.</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[This blog is UNDER PROGRESS. I have overspent the time for writing this blog. And now I feel like I should first work on some more important blogs, and then I will continue this not-so-important blog. The first and last parts are almost complete. You will find grey-coloured text that is either redundant or contains ideas which I am yet to integrate with the main text. And also you will find silly grammatical mistakes because of two reasons. First, I am still learning English. Second, the mistakes which I could have avoided but still committed because I wanted to write fast and hence avoided conscious grammar checking. Later, when I continue working on this blog, I will have to use a grammar checker tool for unavoidable mistakes.]]></summary></entry><entry><title type="html">AI - Mathematical Formulation of Intelligence</title><link href="http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation/" rel="alternate" type="text/html" title="AI - Mathematical Formulation of Intelligence" /><published>2025-10-27T00:00:00+05:30</published><updated>2025-10-27T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation/"><![CDATA[<p><em>Ideas presented in this blog are from my own understanding. Feel free to email me for any corrections.</em></p>
+
+<h3 id="introduction">Introduction</h3>
+<p>There is an aspiring AI Researcher named Aire (appended ‘e’ because it makes the name sound like a name of a person. Pronounce it as “air”). He once came to know about AI. And since then it has fascinated him a lot. The fact that it is a revolutionary technology and can significantly improve human lives in <em>all the ways</em> excites him. To say the least, AI has already begun to positively disrupt these areas: healthcare, education, agriculture, science and engineering, waste management, driving assistance, etc. And to say a bit more, AI will also help in far-fetched problems like finding habitable planets.</p>
+
+<p>AI is a revolutionary concept because it combines the power of computers and of humans. A computer with AI has the efficiency, accuracy, untiringness, unforgetfulness of computers and the intelligence of human beings. 
+So, it can do what humans can do with all the qualities of a computer just mentioned. And also it can achieve those goals very easily which are comparitively hard for humans, like linear regression.</p>
+
+<p>But there is one important issue with the use of AI, which is its significant carbon footprint. But Aire knows that AI has the potential to turn the table. It can do more good than harm. It can help the environment by creating appropriate materials (e.g., for carbon capture), clean energy (e.g., fusion energy), reducing its own carbon footprint by creating efficient AI, and in many other ways.</p>
+
+<p>This article explains why maths is a requirement to create AI and comes to the conclusion that, in order to become an AI researcher, one must master the required mathematics. Apart from this, it explains the relation between AI and ML.</p>
+
+<h3 id="defining-intelligence">Defining Intelligence</h3>
+<p>Let’s first define intelligence for the purpose of this blog. There is an agent or doer (could be a human or computer). An agent has intelligence when it has two functions - learning and action. An agent with intelligence can achieve goals, and it achieves them through the “action” function. If an agent does not have enough knowledge to achieve a goal, then it first acquires the required knowledge through the “learning” function (e.g., humans learn to drive before driving a car).</p>
+
+<p>The <em>“action” function</em> takes a goal, existing knowledge, its previous outputs, and the environment as inputs to the function. And outputs a value which is used to achieve the goal. An agent achieves the goal by <em>iterating over</em> the action function. It takes the state of the environment and previous outputs of the function, and <em>creates</em> new output such that it progresses towards the goal. This sequence of outputs is used to achieve the goal. Number of times the action function is used may vary from one to many, depending on the goal. When the “action” function is called, we can say that <em>an agent did a thoughtful action</em>. Why thoughtful? Because the function creates an output so that it moves closer to its goal.</p>
+
+<p>Let’s understand action function with respect to human intelligence. Humans achieve goals by taking input (through the senses) from the environment and giving it to the action function inside the brain. Then the action function gives output in the form of electrical signals to external organs. Output makes external organs act in order to achieve the goal. If the goal is not achieved, then action is taken again until it is achieved. If the agent has enough knowledge, then every action moves the agent closer to the goal.</p>
+
+<p>E.g., for a goal of folding a t-shirt, your brain <em>output signals</em> which move your hand and arm. Folding a t-shirt requires multiple movements, therefore the action function is called multiple times. Another example is writing a maths proof where the action function determines which equation to write next, given the context of what is already written. Hence, the action function is called for each step of the proof. Goals where hand movements are required, like writing a maths proof, will always require more than one action. But a goal of classifying an object requires only one call to the action function. E.g., when you look at an apple, you immediately recognise it as an apple.</p>
+
+<p>We want an agent to achieve a goal. If an agent has the required knowledge, it will use the “action” function to achieve it successfully. If existing knowledge is not enough, then the agent will fail to achieve the goal. So, it must first acquire the required knowledge. Learning is the process of acquiring the required <em>knowledge</em> and is done via the “learning” function.</p>
+
+<p>Learning happens in two phases. In the first phase, an agent acquires enough knowledge to achieve a goal. After acquiring enough knowledge, the second phase begins, where the agent learns while successfully achieving the goal. In the second phase, it updates the knowledge such that it achieves the same goal next time with better efficiency and accuracy.</p>
+
+<p>An agent <em>learns the hard way</em>. That is, it learns through experience of applying the action function multiple times. For a goal, if there is no risk in applying the action function with insufficient knowledge, then learning happens in the actual environment. An example of such a goal is folding a t-shirt. If there is risk in applying the action function, then first-phase learning happens in a dummy environment, and second-phase learning happens in an actual environment. E.g., humans learn to drive in a controlled environment before driving in a city.</p>
+
+<p>The “learning” function takes environment, existing knowledge, output from the action function, and feedback as inputs to the function. And outputs updated knowledge. An agent learns by iterating over this function and action function alternatively. Updated knowledge is existing knowledge plus the knowledge gain. Knowledge gain is <em>created</em> in three major ways. The first way is via considering action function output and feedback in the form of supervision or reward. E.g., you learn to drive under the supervision of an instructor. Or you are learning on your own by feeling good (as a reward) when you successfully pass a hurdle. The second way is via considering the changed environment when action is performed. E.g., harder you press the accelerator, faster the car runs. Third but not the least is learning by simply observing the environment. E.g., learning by observing a driver. An agent may depend on some or on all three ways of learning.</p>
+
+<p>This is an abstract description of intelligence, which is enough for this blog. But every aspect of human-level intelligence can be explained (which I will explain in a dedicated blog) through this two-function framework.</p>
+
+<h3 id="about-computers">About Computers</h3>
+<p>A computer represents everything in numbers and can do mathematical operations on these numbers, like addition, multiplication, etc.</p>
+
+<h3 id="mathematics-is-required">Mathematics is Required</h3>
+<p>Aire wants to be an AI researcher. <em>Artificial Intelligence (AI)</em> is really a concept or abstract idea of a computer having intelligence. The aim of AI researchers is to make this concept a reality or <em>implement</em> this concept by writing a computer program. To implement AI, they need to implement the two functions of intelligence.</p>
+
+<p>What these functions do is that they <em>create</em> (not fetch) the output by using the input. That is what the purpose of the “learning” function is: to create the required knowledge which an agent does not have already. It creates by relying on the input of the function. Let’s understand creation of output by the action function through an example. When you have a goal of writing an essay on some topic. The action function in your brain receives inputs and sends the output in the form of electrical signals about “what to write” and “how to write” (describing how to move a pen through hand). Whether we have written an essay on the same topic before or are writing it for the first time, we will write it differently every time we have to write because of <em>different situations</em>. Every call of the action function creates signals (about what words to write and how to write) which depend on inputs of the function - the goal (write an essay for a school exam or for the national competition on X topic), the environment (different inspirations depending on a place of writing), what is already written and, of course, your knowledge (which varies with time). The space of all possible inputs is large, and we can’t store the output for each input configuration. Therefore, the action function creates the output depending on the input configuration and does not just fetch it. That is, an essay we write is not <em>stored somewhere in the brain</em>, but we <em>create</em> it.</p>
+
+<p>The outputs and inputs (e.g., environment, goal, knowledge, feedback, etc.) of these functions would be represented in the form of numbers in a computer. And in a computer, mathematical operations are <em>required</em> to create any numbers, e.g. output numbers from input numbers. But for fetching numbers (data) from the memory, maths operations are not required. It uses the address of the data and brings the data through the bus from that memory address.</p>
+
+<p>So the point I am making here is that a researcher <em>has to implement</em> the functions of intelligence in the form of <em>mathematical functions</em>. Then these functions can be written in a programming language, which is an easy part. The <strong>real difficulty for AI researchers is how to formulate the two functions of intelligence in mathematics</strong>.</p>
+
+<p>To come up with these maths functions, an AI researcher has to first gain the knowledge of intelligence and mathematics. Like a physicist who gains the knowledge of the world via observation and intuition. And learns the maths (Einstein at least once had to learn some topics of maths before he could formulate his theory) required to convey that knowledge in the mathematical language.</p>
+
+<p>To gain the knowledge of intelligence, a researcher could observe himself, other human beings and animals. Or via intuition. Or by learning from cognitive scientists, neuroscientists or others who study the human (and animal) brain and intelligence. After learning about intelligence, a researcher will have some idea of how to formulate the functions which allows him/her to search for appropriate maths which can be used to formulate.</p>
+
+<h3 id="existing-maths-formulations">Existing Maths Formulations</h3>
+<p><em>I will quickly go over this section.</em></p>
+
+<p>In the 20th century, a group of researchers were able to have some understanding of intelligence, which allowed them to find the appropriate mathematics to formulate it. Topics of mathematics they found appropriate were linear algebra, probability, and calculus. After the formulation, they were able to easily write the corresponding computer algorithms. Their way of formulating in mathematics the two functions of intelligence is known as <em>Machine Learning (ML)</em>. And the corresponding computer programs are known as ML algorithms.</p>
+
+<p><em>Deep Learning (DL)</em> algorithms (a class of ML algorithms, where mathematical formulation is inspired by the human brain) became successful in 2012. With DL, researchers were able to implement <em>Artificial Narrow Intelligence (ANI)</em>, that is, a DL algorithm can learn to achieve a single well-specified human-level goal. For e.g., an image classification algorithm can only do image classification. With this success, computers became <em>intelligent assistants</em> of humans and helped humans in unimaginable ways. To name a few, they helped humans in language translation, medical diagnosis and treatment, leaf disease classification, driving, science and in so many other ways. But it is still narrow intelligence. ANI is <em>inherently</em> limited in many ways (ANI can not do robust prediction, continual learning, generalisation, reasoning, planning, and learning with small sample complexity). To solve these problems, researchers have to create an AI algorithm which can achieve multiple human-level goals which is only possible when they formulate proper intelligence or more commonly called Artificial General Intelligence (in contrast to ANI). AGI means computers having human-level intelligence.</p>
+
+<p>Recently researchers have created Large Language Models (LLMs) and Multi-Modal Models (I will refer to both of them simply as “LLMs”) which feel like human-level intelligence. Although the mathematical formulation of LLMs is different and better than the previous formulations of intelligence, the main success of LLMs is because of a larger number of parameters (more storage for knowledge), larger training data (richer environment) and large compute power. Each subsequent version of LLM was trained with the larger scale of each of these three factors. Hence, the accuracy and generalisation capability of LLMs kept increasing with the version. But other limitations (continual learning, etc.) of DL algorithms are still unsolved. Also, these three factors are limited and researchers cannot indefinitely keep increasing these factors. Also, physical understanding (computer vision) of the world is still far behind the progress in language-level intelligence. AI researchers have to find and are finding drastically better and newer mathematical formulations of intelligence. So, AI is still very much an active research area.</p>
+
+<p>In the 20th century, there was another group who implemented the concept of AI by only implementing the action function. The knowledge required for the goal was fed to the computer manually. There was no learning function. This works for simpler goals where required knowledge can be fed easily. This implementation is called Symbolic AI or GOFAI (Good Old Fashioned AI).</p>
+
+<p>But for complex goals like image classification, feeding the required knowledge is such a laborious task that a researcher would rather think about how humans learn and then try to formulate it in maths. The world is full of complex goals. It seems easier to find the learning algorithm that would allow the computer to learn to achieve all the complex goals than to do the laborious task of manually feeding the knowledge for each complex goal.</p>
+
+<p>There is one advantage of Symbolic AI over ML. With Symbolic AI, a computer can do better reasoning than with the ML algorithm. It is because of the difference in the way knowledge is represented in these implementations. In Symbolic AI, knowledge is represented in the <em>human-readable way</em> (i.e., in words). Which makes it easy for the researcher to implement <em>how humans reason</em> in the action function by analysing the thoughts of humans (in contrast to understanding how neurons in the brain work). That is, while writing an essay, we think and write. We can analyse our thinking while we are writing and figure out “how we decide what sentence to write next, out of all the thoughts of potential next sentences”. Or when we write mathematical proof, we can analyse our thoughts about how we decide what step to write next. This analysis of thoughts gives insights on how humans reason, which allows the researcher to implement it in the action function.</p>
+
+<p>After the popularity of DL, it was proved that the learning function works, making DL scalable in contrast to GOFAI. But to add reasoning in DL is not as natural or straightforward as in Symbolic AI. So Symbolic AI researchers have proposed a new concept of <em>Neuro Symbolic AI</em>, which combines the best of both worlds.</p>
+
+<h3 id="road-to-becoming-an-ai-researcher">Road to Becoming an AI Researcher</h3>
+<p>As I mentioned above, during the nascent age of AI, researchers first understood intelligence and then tried to formulate it in maths. They didn’t have any literature about how to formulate it. They formulated it for the first time and got some results. Then they kept improving the formulation, and here we are in the age of LLMs.</p>
+
+<p>It has been decades since the inception of AI as a concept and more than one decade since the success of DL. In these years, a lot of great researchers have studied AI and its formulations. So, aspiring AI researchers like Aire have rich literature at their disposal. By understanding the literature, they would be able to access all the knowledge of past and current AI researchers. Aire would know about their understanding of intelligence, what they have already tried, what formulations worked, what didn’t work, the limitations of current formulations and potential ways of improvement. And then it is easier (difficult per se but easier compared to starting from scratch) for Aire to propose novel and better formulations.</p>
+
+<p>But since AI is formulated in maths, AI literature is written in the language of mathematics. So, Aire <em>should first master the required maths</em> (as mentioned above, linear algebra, probability, etc.) before he will be able to master the literature. This is in contrast to early AI researchers who first understood the intelligence and then worked on maths.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>AI is a concept. To make it real, a researcher is required to formulate it in maths. So, aspiring AI researchers like Aire must master the required mathematics which allow them to master current literature and propose newer algorithms by formulating their understanding of intelligence.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Ideas presented in this blog are from my own understanding. Feel free to email me for any corrections.]]></summary></entry><entry><title type="html">About Kevin Murphy’s book series on Probabilistic Machine Learning</title><link href="http://localhost:4000/blog/2025/10/22/ML-books-by-KevinMurphy/" rel="alternate" type="text/html" title="About Kevin Murphy’s book series on Probabilistic Machine Learning" /><published>2025-10-22T00:00:00+05:30</published><updated>2025-10-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/22/ML-books-by-KevinMurphy</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/22/ML-books-by-KevinMurphy/"><![CDATA[<p>To start learning maths, I looked up the potential resources and found some of the books just perfect. The books which I found most perfect are actually two book series by Kevin Murphy - <a class="citation" href="#pml1Book">(Murphy, 2022)</a>, <a class="citation" href="#pml2Book">(Murphy, 2023)</a>. He calls them simply book1 and book2, with a total of 860 and 1369 pages, respectively. These are <em>very comprehensive</em> books on machine learning and deep learning. It covers maths fundamentals of ML in a very detailed manner. 7 chapters on maths in book1 covered in 290 pages. 5 chapters on maths in book2 covered in 340 pages. And mentions many good references for further understanding. That’s a total of 630 pages of mathematics, which is like a <em>book of mathematics</em> within a larger book on ML. And the best part is that this <em>mathematics is just for ML</em>. So, when you study the maths from these books, you won’t doubt whether a topic of maths is useful for AI or how it will be used in an AI algorithm. Because you know that if it is mentioned in the book, it will be used further in the book to explain atleast one of the AI algorithms.</p>
+
+<p>And in the rest of the pages, it covers <em>almost every idea</em> of ML (including DL) in a <em>mathematical manner</em>. And mentions the corresponding research papers. Once you complete reading the two books, you would have either already understood or would be able to easily understand most of the AI literature, and you would be ready to do research. There are many great reviews from great researchers (I do not think they are paid reviews). Let me mention one of the reviews which precisely summarises what other reviewers said about the book.</p>
+
+<blockquote>
+  <p>“This book could be titled ‘What every ML PhD student should know’. If you master the material in this book, you will have an outstanding foundation for successful research in machine learning.” – Tom Dietterich, Oregon State U.</p>
+</blockquote>
+
+<p>There are two qualities of Murphy’s books which make them perfect. First is the comprehensive coverage of almost all the topics of ML and maths fundamentals, rather than covering few topics in a detailed manner. Because there are already plenty of resources like research papers, blogs, lecture notes and videos, other books, etc., which cover each topic in a detailed manner, and you can use these to understand properly. What is needed is to <em>coherently bind</em> together all the topics in one place, which this book does perfectly.</p>
+
+<p>The second quality is that it covers each topic of ML in a <em>mathematical manner</em>. Just like the saying that “a picture speaks a thousand words”, in the same spirit, the mathematics of a topic is like a picture which explains a topic more comprehensively than explaining it in words. Because one can extend that mathematical explanation further logically and find more insights about a topic. This book provides enough maths of a topic which you can use to extend the explanation.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[To start learning maths, I looked up the potential resources and found some of the books just perfect. The books which I found most perfect are actually two book series by Kevin Murphy - (Murphy, 2022), (Murphy, 2023). He calls them simply book1 and book2, with a total of 860 and 1369 pages, respectively. These are very comprehensive books on machine learning and deep learning. It covers maths fundamentals of ML in a very detailed manner. 7 chapters on maths in book1 covered in 290 pages. 5 chapters on maths in book2 covered in 340 pages. And mentions many good references for further understanding. That’s a total of 630 pages of mathematics, which is like a book of mathematics within a larger book on ML. And the best part is that this mathematics is just for ML. So, when you study the maths from these books, you won’t doubt whether a topic of maths is useful for AI or how it will be used in an AI algorithm. Because you know that if it is mentioned in the book, it will be used further in the book to explain atleast one of the AI algorithms.]]></summary></entry><entry><title type="html">Statistical Mechanics, Hopfield Network and Boltzmann Machine</title><link href="http://localhost:4000/blog/2025/10/21/statMech-hn-bm/" rel="alternate" type="text/html" title="Statistical Mechanics, Hopfield Network and Boltzmann Machine" /><published>2025-10-21T00:00:00+05:30</published><updated>2025-10-21T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/21/statMech-hn-bm</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/21/statMech-hn-bm/"><![CDATA[<p>Last year, I started my blogging journey and wrote blogs on the Boltzmann Machine (BM), Hopfield Network (HN) and statistical mechanics, respectively. I am sharing here links to drafts of these blogs and corresponding code. These blogs are almost in their prefinal version.</p>
+
+<p>Why did I start blogging? Why did I choose these topics? Why didn’t I complete them? What am I now focusing on? Answers to all these questions can be found in this blog - <a href="/blog/2025/10/28/setting-the-tone/" target="_blank">Setting The Tone</a>.</p>
+
+<p>Here are (Notion) links. And code for BM and HN:</p>
+<ul>
+  <li><a href="https://www.notion.so/Blog-Thermodynamics-Statistical-Mechanics-Ising-Model-AI-2bfa87ef96fd4cbfba09b493a6250cb2?pvs=21" target="_blank">Blog-Thermodynamics-Statistical Mechanics-Ising Model-AI</a></li>
+  <li><a href="https://www.notion.so/Blog-Hopfield-Network-1202f5954fbf80ac9f06fa5929c14493?pvs=21" target="_blank">Blog - Hopfield Network</a> (<a href="https://github.com/joshi98kishan/deciphering-hopfield-network" target="_blank">Code</a>)</li>
+  <li><a href="https://www.notion.so/Blog-Boltzmann-Machine-1202f5954fbf808ea6d8de1cfee7b30b?pvs=21" target="_blank">Blog - Boltzmann Machine</a> (<a href="https://github.com/joshi98kishan/boltzmann-machine" target="_blank">Code</a>)</li>
+</ul>
+
+<p>All these blogs are a little messy. You would find the grey-coloured text redundant. I tried to make blogs self-contained. And there are complete, clean derivations of required equations for HN and BM.</p>
+
+<p>Fun Fact: In <a href="https://github.com/joshi98kishan/deciphering-hopfield-network/blob/1475cb7d8a679f91cf78e58c8570166700383dff/README.md" target="_blank">September 2024</a>, I decided to study the Hopfield Network and the Boltzmann Machine, and on <a href="https://www.nobelprize.org/prizes/physics/2024/prize-announcement/" target="_blank">8th October, 2024</a>, the <em>Nobel Prize in Physics</em> was announced, and it was given to the creators of these two algorithms. It was unusual because HN and BM didn’t extend the knowledge of physics.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Last year, I started my blogging journey and wrote blogs on the Boltzmann Machine (BM), Hopfield Network (HN) and statistical mechanics, respectively. I am sharing here links to drafts of these blogs and corresponding code. These blogs are almost in their prefinal version.]]></summary></entry></feed>
