@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-10T15:12:01+05:30</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Linear Algebra for ML</title><link href="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/" rel="alternate" type="text/html" title="Linear Algebra for ML" /><published>2025-11-10T00:00:00+05:30</published><updated>2025-11-10T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/"><![CDATA[<p><span style="color: blue;"><em><strong>Note:-</strong> This blog is under active development. I am currently reading a book titled “Linear Algebra” by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete.</em></span></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-10T20:43:32+05:30</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Linear Algebra for ML</title><link href="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/" rel="alternate" type="text/html" title="Linear Algebra for ML" /><published>2025-11-10T00:00:00+05:30</published><updated>2025-11-10T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/"><![CDATA[<p><span style="color: blue;"><em><strong>Note:-</strong> This blog is under active development. I am currently reading a book titled “Linear Algebra” by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete.</em></span></p>
 
 <h3 id="context">Context</h3>
 <p><em>If you haven’t read previous blogs, here is some context:</em></p>
@@ -63,89 +63,7 @@
 
 <p>So, “linear function” is the spirit of LA, or it is the root concept of LA which defines LA. From “linear function”, all the concepts of LA originate but in the form of a tree data structure. That is, there are some concepts, namely “vector”, “vector space” and “matrix”, which directly originate from the root and hence are at the first level of depth from the root. A vector is nothing but the input or output of a linear function. A vector space is nothing but the space of all possible inputs or the space of all possible outputs. And a matrix is one way to represent a linear function, or it is a way to represent a collection of vectors.</p>
 
-<p>Then from the first level, concepts originate which are at the second level of depth from the root. Concepts at this second level are eigenvector, eigenvalue, determinant, SVD, PCA and all other concepts of LA.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note:- This blog is under active development. I am currently reading a book titled “Linear Algebra” by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete.]]></summary></entry><entry><title type="html">Two Ramps - A path towards becoming an AI researcher</title><link href="http://localhost:4000/blog/2025/11/02/two-ramps-to-AI-mastery/" rel="alternate" type="text/html" title="Two Ramps - A path towards becoming an AI researcher" /><published>2025-11-02T00:00:00+05:30</published><updated>2025-11-02T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/02/two-ramps-to-AI-mastery</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/02/two-ramps-to-AI-mastery/"><![CDATA[<h3 id="requirements">Requirements</h3>
-<p>I am preparing myself to become an AI researcher. And I know what it is mean to be a great researcher and how to become one. Because until now I have read many papers, took many courses and worked on many projects. And when I introspected, I came to know how exactly I am lacking in order to master AI and become a researcher. Now I know how exactly I should learn. So, I am starting from again from zero but this time I know that I will master AI once I complete my learning. This situation of mine gives me so much leverage in creating a great educational content because I will be writing blog while I myself learning so I will know how I understood a concept, what reasoning I followed to understand a concept, since this will be fresh in my mind, I will be able to write about it.</p>
-
-<p>Starting from zero means starting from mastering maths fundamentals and then mastering AI literature.</p>
-
-<p>There are two steps.</p>
-<ul>
-  <li>First, is to master ML maths fundamentals (LA, prob etc.).</li>
-  <li>Second, is to master AI literature.</li>
-</ul>
-
-<h3 id="about-maths-fundamentals">About Maths Fundamentals</h3>
-<p>I have a school level maths knowledge and maths fundamentals is beyond school level maths. I see maths fundamentals as nothing but a collection of tools or building blocks (like lego blocks). School introduced only some of these blocks and that too at an introductory level. But maths fundamentals for ML constitutes all or most of the blocks and that too at advanced level. I won’t define what exactly I mean by blocks or tools. I have a vague sense of what I mean by blocks. But I am sure it will become clear as I will write about them in the future blogs.</p>
-
-<p>There are some ordering among these blocks from basic to advanced. That it, advanced blocks depend on basic blocks. And then there is ordering among the subjects of maths fundamentls, i.e., prob depends on LA etc.</p>
-
-<p>Just how, one can smoothly go from one level to another by going through a ramp. Similarly, I plan to write a series of blogs on maths which will act like a ramp. That is, going through this series of blogs would be like going through a ramp which connects school-level knowledge to a level of ML maths fundamentals mastery. This ramp like series of blogs would assume that you are at a level where you have only school-level knowledge. And this smooth ramp ends at a level where one is a master of ML maths fundamentals. By going through this series of blogs, you will <strong>smoothly gain all the maths knowledge or understanding required to become a great AI researcher</strong>. You will know all the tools required to understanding or improve existing AI algorithms, or create new new and better AI algorithms. If apart from the subjects mentioned in maths fundamentals, some new maths subjects becomes important for AI than I will be considering that subject too. Using the terms AI and ML signifies looking at a single thing from two perspectives. AI term signifies that you are talking about a concept and ML term signifies that you are talking about the algorithm that implements the AI concept.</p>
-
-<p>This series of blogs is nothing but a series of multiple subseries. That is, this larger series of blogs will first contain a series of blogs on linear algebra, then a series of blogs on calculus and optimization, and then a series of blogs on probability and statistics.</p>
-
-<p>Going over a gentle ramp is as simple as walking over it. In the same spirit, every next blog will be simple to understand, once you have understood previous blogs in the series. Just like we have innate skill of <em>walking</em>, in the same manner, we have innate skill of <em>problem solving</em>. Going one step forward is natural for you, you just need to take one step. Similarly, if you are presented with a problem which you could solve with your existing knowledge, then you would be easily able to solve it. Every next blog in the series will deal with such problem and its solution. After understanding previous blogs, you will have enough knowledge to naturally solve that problem and create a solution for yourself.</p>
-
-<p><strong>Softness</strong> of a ramp is because of two reasons:</p>
-<ul>
-  <li>first the ordering of tools is from basic to advance. You will be able to understand first tool with only school level knowledge. And then each subsequent tool will be easy to understand, from your knowledge of previous tools.</li>
-  <li>second is that you will be utilizing your problem solving skills.</li>
-</ul>
-
-<p>Also mention that I will be writing these blogs in <strong>iteration</strong>.</p>
-
-<h3 id="about-ai-literature">About AI Literature</h3>
-
-<h3 id="two-ramps">Two Ramps</h3>
-<p>To become an AI researcher I have to satisfy the requirements. As I mentioned earlier, I will use blogging to learn. Let me mention here the exact plan about how I will be preparing to become a researcher.</p>
-
-<p><strong>Smoothness in learning any topic comes when you know why that block/tool exists and you have the ability to create that block/tool for yourself.</strong>
-    That is, when you know the problem for which that block exists, you try to solve that problem for yourself and then when you read the description about the tool. It will make sense, you will think that this is how this tool must be.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>And most of the time, our intuition will give us vague description of how that tool must be before even looking at the real description of it from any given source. And then when we understand the real description before further solidifying (formulating) our own intuition (because it may take time), we will know that this is how I was trying to create that tool, that description will feel natural, and you will be able to naturally understand that description. 
-
-So, instead of passively understanding any topic, we are actively understanding it. That is, we are trying to recreate that tool using our own problem solving skills and also taking the help of the real description so that we can quickly recreate it.
-
-Once we become the creator, we will know our tool comprehensively, i.e., when to use it, how to use it, what it is doing etc.
-</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Requirements I am preparing myself to become an AI researcher. And I know what it is mean to be a great researcher and how to become one. Because until now I have read many papers, took many courses and worked on many projects. And when I introspected, I came to know how exactly I am lacking in order to master AI and become a researcher. Now I know how exactly I should learn. So, I am starting from again from zero but this time I know that I will master AI once I complete my learning. This situation of mine gives me so much leverage in creating a great educational content because I will be writing blog while I myself learning so I will know how I understood a concept, what reasoning I followed to understand a concept, since this will be fresh in my mind, I will be able to write about it.]]></summary></entry><entry><title type="html">Why linear algebra is important for ML?</title><link href="http://localhost:4000/blog/2025/10/30/why-LA-for-ML/" rel="alternate" type="text/html" title="Why linear algebra is important for ML?" /><published>2025-10-30T00:00:00+05:30</published><updated>2025-10-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/30/why-LA-for-ML</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/30/why-LA-for-ML/"><![CDATA[<ul>
-  <li>explain how LA came to use in ML and AI.</li>
-  <li>McCulloch-pitts was the first artificial model of biological neuron, and it was linear because that is close to how real neuron works.
-    <ul>
-      <li>references:
-        <ul>
-          <li>first lecture of CMU DL course</li>
-          <li>https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf</li>
-          <li>https://en.wikipedia.org/wiki/Artificial_neuron#Biological_models</li>
-          <li>https://chatgpt.com/share/6903547e-4e64-800e-a631-73a37433dc41</li>
-          <li>https://en.wikipedia.org/wiki/Neural_circuit#Connections_between_neurons</li>
-          <li>https://en.wikipedia.org/wiki/Synaptic_weight
-  weight in biological neuron.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p>Why linearity?</p>
-<ul>
-  <li>https://math.stackexchange.com/questions/2871711/what-about-linearity-makes-it-so-useful</li>
-</ul>
-
-<p>Two conclusions I came to:</p>
-<ul>
-  <li>First it is easy to find linear relationship, e.g., least squares or PCA. There is only one solution, you just find that particular solution. That is, there is only one way to establish linear relationship. On the other hand, there are many ways you can find the non-linear relationship.</li>
-  <li>Second, it is highly interpretable. You know which variables impact how much to the result.</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[explain how LA came to use in ML and AI. McCulloch-pitts was the first artificial model of biological neuron, and it was linear because that is close to how real neuron works. references: first lecture of CMU DL course https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf https://en.wikipedia.org/wiki/Artificial_neuron#Biological_models https://chatgpt.com/share/6903547e-4e64-800e-a631-73a37433dc41 https://en.wikipedia.org/wiki/Neural_circuit#Connections_between_neurons https://en.wikipedia.org/wiki/Synaptic_weight weight in biological neuron.]]></summary></entry><entry><title type="html">Open Questions For Me</title><link href="http://localhost:4000/blog/2025/10/29/open-questions-for-me/" rel="alternate" type="text/html" title="Open Questions For Me" /><published>2025-10-29T00:00:00+05:30</published><updated>2025-10-29T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/29/open-questions-for-me</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/29/open-questions-for-me/"><![CDATA[<p>I do have vague or superficial understanding of answers of these questions but I do not have concrete understanding.</p>
-
-<ul>
-  <li>Why neural networks (NN) need to be non-linear?</li>
-  <li>How NN are non-linear?</li>
-  <li>More broad question - Why current AI is the way it is?
-    <ul>
-      <li>It requires understanding the evolution of algorithms, about what failed at various stages of evolution? And what succeeded and evolved further?</li>
-    </ul>
-  </li>
-  <li></li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[I do have vague or superficial understanding of answers of these questions but I do not have concrete understanding.]]></summary></entry><entry><title type="html">Setting The Tone</title><link href="http://localhost:4000/blog/2025/10/28/setting-the-tone/" rel="alternate" type="text/html" title="Setting The Tone" /><published>2025-10-28T00:00:00+05:30</published><updated>2025-10-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/28/setting-the-tone</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/28/setting-the-tone/"><![CDATA[<p><span style="color: red;"><em>This blog is UNDER PROGRESS. I have overspent the time for writing this blog. And now I feel like I should first work on some more important blogs, and then I will continue this not-so-important blog. The first and last parts are almost complete. You will find grey-coloured text that is either redundant or contains ideas which I am yet to integrate with the main text. And also you will find silly grammatical mistakes because of two reasons. First, I am still learning English. Second, the mistakes which I could have avoided but still committed because I wanted to write fast and hence avoided conscious grammar checking. Later, when I continue working on this blog, I will have to use a grammar checker tool for unavoidable mistakes.</em></span></p>
+<p>Then from the first level, concepts originate which are at the second level of depth from the root. Concepts at this second level are eigenvector, eigenvalue, determinant, SVD, PCA and all other concepts of LA.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note:- This blog is under active development. I am currently reading a book titled “Linear Algebra” by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete.]]></summary></entry><entry><title type="html">Setting The Tone</title><link href="http://localhost:4000/blog/2025/10/28/setting-the-tone/" rel="alternate" type="text/html" title="Setting The Tone" /><published>2025-10-28T00:00:00+05:30</published><updated>2025-10-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/28/setting-the-tone</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/28/setting-the-tone/"><![CDATA[<p><span style="color: red;"><em>This blog is UNDER PROGRESS. I have overspent the time for writing this blog. And now I feel like I should first work on some more important blogs, and then I will continue this not-so-important blog. The first and last parts are almost complete. You will find grey-coloured text that is either redundant or contains ideas which I am yet to integrate with the main text. And also you will find silly grammatical mistakes because of two reasons. First, I am still learning English. Second, the mistakes which I could have avoided but still committed because I wanted to write fast and hence avoided conscious grammar checking. Later, when I continue working on this blog, I will have to use a grammar checker tool for unavoidable mistakes.</em></span></p>
 
 <h3 id="prerequisite">Prerequisite</h3>
 <p>I have written a blog titled - <a href="/blog/2025/10/27/AI-is-maths-formulation/" target="_blank">AI - Mathematical Formulation of Intelligence</a>. This blog explains how AI is only possible by running maths equations in the computer, which motivates me and will motivate others to first master maths in order to do AI research.</p>
