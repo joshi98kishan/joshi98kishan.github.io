@@ -1,0 +1,108 @@
+<!doctype html>
+<html> <!-- use lang attr in html tag -->
+
+  <head>
+    <title>Optimization for ML</title>
+    <meta charset="utf-8" />
+    <meta name='author' content='Kishan Joshi' />
+    <meta
+        name="description"
+        content="I write blogs on maths and AI." />
+    
+    <link rel='shortcut icon' href='/assets/images/favicon-16x16.png' />
+    
+    <!-- for responsive webpage -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/trac.css" />
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Optimization for ML</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Optimization for ML" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Note:- This blog is under active development. I am currently reading a book, “Algorithms for Optimization” by Mykel J. Kochenderfer and Tim A. Wheeler. This book is freely available here." />
+<meta property="og:description" content="Note:- This blog is under active development. I am currently reading a book, “Algorithms for Optimization” by Mykel J. Kochenderfer and Tim A. Wheeler. This book is freely available here." />
+<link rel="canonical" href="http://localhost:4000/blog/2025/11/12/optimization-for-ml/" />
+<meta property="og:url" content="http://localhost:4000/blog/2025/11/12/optimization-for-ml/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-12T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Optimization for ML" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-12T00:00:00+05:30","datePublished":"2025-11-12T00:00:00+05:30","description":"Note:- This blog is under active development. I am currently reading a book, “Algorithms for Optimization” by Mykel J. Kochenderfer and Tim A. Wheeler. This book is freely available here.","headline":"Optimization for ML","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2025/11/12/optimization-for-ml/"},"url":"http://localhost:4000/blog/2025/11/12/optimization-for-ml/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- {# % include mathjax.html %} -->
+  </head>
+
+
+
+  <body>
+    <!-- <nav>
+    <a href = "/"> Blog </a>
+    <a href = "/about"> About </a>
+</nav> -->
+
+<div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'>Blog</a></li>
+        <li><a href='/about'>About</a></li>
+        <!-- <li><a href='/feed.xml'>RSS</a></li> -->
+    </ul>
+</div>    
+    <div class='content'>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>Optimization for ML</h1>
+            <h4>Importance of optimization for ML</h4>
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Published</h3>
+                    <p>12 November 2025</p>
+                </div>
+            </div>
+
+            <!-- Below div is not required. -->
+            <!-- <div class='clear'></div> -->
+        </div>
+    </div>
+    <div class='wrap article'>
+        <p><span style="color: blue;"><em><strong>Note:-</strong> This blog is under active development. I am currently reading a book, “Algorithms for Optimization” by Mykel J. Kochenderfer and Tim A. Wheeler. This book is freely available <a href="https://algorithmsbook.com/optimization/" target="*blank">here</a>.</em></span></p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Machine Learning is a category of algorithms which allows the computer to find a <em>function</em> on its own (without needing to explicitly programme the function) that completes a particular <em>task</em>. When the algorithm finds a desired function, then it is said that the machine has <em>learned</em> to complete a particular task. Machine learning is framed as an optimization problem, and because of this framing, a computer could learn to complete a task <em>on its own</em>. Once it is framed as an optimization problem, then one can use existing optimization algorithms. And we know that the optimization algorithm can find a <em>solution</em> (defined below) to the optimization problem on its own. So, this mystery of “computer learning to complete a task on its own without being explicitly programmed” gets solved when we realize that ML is nothing but an optimization problem.</p>
+
+<!-- Optimization problems and their corresponding algorithms are highly intuitive (that is, very easy to understand and a feeling that you know it already). And when ML is considered as nothing but an optimization problem then *all* the ML algorithms become intuitive. -->
+
+<!-- It is hard to visualize spaces beyond three dimension and almost all the real problems deals with higher dimensional spaces. So, Another motivation to learn about optimization algorithms is that it will teach me how to work effectively with high dimensional spaces.  So, by learning optimization algorithms, one can  -->
+
+<h3 id="optimization">Optimization</h3>
+
+<p>For an optimization algorithm to find a solution on its own, one has to first define an objective function. An objective function takes the candidate solution as input and outputs a number denoting how well the desired objective is achieved. The output can either represent the goodness or badness, depending on how the objective function is defined. If output represents the goodness of the input (candidate solution), then input is <em>searched</em> for such that it maximises the objective function. The input which maximises the objective function is called a “solution” of the optimization problem.</p>
+
+<h3 id="ml-as-an-optimization-problem">ML as an Optimization Problem</h3>
+
+<p>As mentioned in the first para, ML is framed as an optimization problem. The task which an ML algorithm learns to complete is used to define an objective function. The input to this objective function is nothing but a candidate function to complete a given task. The output of this objective function (in most cases) represents the badness, meaning it represents how badly the given candidate function (input of objective function) completes the task. So, the optimization algorithm finds a function which least badly completes the task, i.e., the <em>solution</em> of the optimization problem completes the task well.</p>
+
+<!-- And it learns it by looking at the data. -->
+
+    </div>
+    
+     <!-- add a logic to only show if there is citation in a post -->
+    <div id='bibliography'>
+        <div class='wrap'> 
+             <!-- <p>References:</p> -->
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+
+</div>
+  </body>
+</html>
