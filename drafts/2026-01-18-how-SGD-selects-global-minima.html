@@ -1,0 +1,142 @@
+<!doctype html>
+<html> <!-- use lang attr in html tag -->
+
+  <head>
+    <title>PaperExp - "How SGD Selects the Global Minima in Over-parameterized Learning - A Dynamical Stability Perspective"</title>
+    <meta charset="utf-8" />
+    <meta name='author' content='Kishan Joshi' />
+    <meta
+        name="description"
+        content="I write blogs on maths and AI." />
+    
+    <link rel='shortcut icon' href='/assets/images/favicon-16x16.png' />
+    
+    <!-- for responsive webpage -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/trac.css" />
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>PaperExp - “How SGD Selects the Global Minima in Over-parameterized Learning - A Dynamical Stability Perspective”</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="PaperExp - “How SGD Selects the Global Minima in Over-parameterized Learning - A Dynamical Stability Perspective”" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Implementation Currently only toy example is implemented: Repo link" />
+<meta property="og:description" content="Implementation Currently only toy example is implemented: Repo link" />
+<link rel="canonical" href="http://localhost:4000/drafts/2026-01-18-how-SGD-selects-global-minima.html" />
+<meta property="og:url" content="http://localhost:4000/drafts/2026-01-18-how-SGD-selects-global-minima.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-01-18T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="PaperExp - “How SGD Selects the Global Minima in Over-parameterized Learning - A Dynamical Stability Perspective”" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-01-18T00:00:00+05:30","datePublished":"2026-01-18T00:00:00+05:30","description":"Implementation Currently only toy example is implemented: Repo link","headline":"PaperExp - “How SGD Selects the Global Minima in Over-parameterized Learning - A Dynamical Stability Perspective”","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/drafts/2026-01-18-how-SGD-selects-global-minima.html"},"url":"http://localhost:4000/drafts/2026-01-18-how-SGD-selects-global-minima.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- {# % include mathjax.html %} -->
+  </head>
+
+
+
+  <body>
+    <!-- <nav>
+    <a href = "/"> Blog </a>
+    <a href = "/about"> About </a>
+</nav> -->
+
+<div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'>Blog</a></li>
+        <li><a href='/g_ramps'>G-Ramps</a></li>
+        <li><a href='/drafts'>Drafts</a></li>
+        <li><a href='/about'>About</a></li>
+    </ul>
+</div>    
+    <div class='content'>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>PaperExp - "How SGD Selects the Global Minima in Over-parameterized Learning - A Dynamical Stability Perspective"</h1>
+            <h4>This blog explains this paper and the maths in it in detail, along with implementation and rigourous maths derivations.</h4>
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Published</h3>
+                    <p>18 January 2026</p>
+                </div>
+            </div>
+
+            <!-- Below div is not required. -->
+            <!-- <div class='clear'></div> -->
+        </div>
+    </div>
+    <div class='wrap article'>
+        <h4 id="implementation">Implementation</h4>
+<p>Currently only toy example is implemented: <a href="https://github.com/joshi98kishan/how-SGD-selects-global-minima-LeiWu2018" target="_blank">Repo link</a></p>
+
+<h3 id="maths-prerequisite">Maths Prerequisite</h3>
+<p>What maths knowledge is required to understand this paper completely.</p>
+<ul>
+  <li>Expectation</li>
+  <li>Eigenvalue</li>
+  <li>Multivariate Calculus</li>
+  <li>Deep Learning</li>
+  <li>Dynamical System</li>
+</ul>
+
+<h3 id="quotes">Quotes</h3>
+
+<blockquote>
+  <ul>
+    <li>But now in the setting of over-parametrized learning, e.g. deep learning, when there is a large set of global minima, all of which have zero training error but the test error can be very different, this issue becomes highly relevant.</li>
+    <li>In fact one might say that the task of optimization algorithms has become: Find the set of parameters with the smallest test error among all the ones with zero training error.</li>
+    <li>At the moment, this is clearly an impossible task since we do not have much explicit information about the population risk. Therefore in this paper, we take a limited view and ask the question: Which global minima (of the empirical risk, of course) are accessible to a particular optimization algorithm with a particular set of hyper-parameters?</li>
+    <li>Specifically, in deep learning one of the most puzzling issues is the recent observation that SGD tends to select the so-called flat minima,</li>
+    <li>and flatter minima seem to generalize better</li>
+    <li>The analysis leads to a sharpness-non-uniformity diagram that characterizes the kind of minima that are stable and hence accessible for SGD. We show that both the sharpness and the non-uniformity are important for the selection of the global minima, although we do observe in experiments that these two quantities are strongly correlated for deep neural network models.</li>
+  </ul>
+</blockquote>
+
+<h3 id="introduction">Introduction</h3>
+<p>This blog explains this NeurIPS 2018 paper: <a href="https://proceedings.neurips.cc/paper/2018/file/6651526b6fb8f29a00507de6a49ce30f-Paper.pdf" target="_blank">“How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective”</a> by Lei Wu, Chao Ma and Weinan E.</p>
+
+<p>Let me first state a fact which this paper uses to describe the problem it deals with:</p>
+
+<ul>
+  <li>In deep learning, training error is being optimised but there are <em>many global minimas*</em>* (minimas with lowest training error, i.e., zero training error).</li>
+  <li>SGD finds flatter minima.</li>
+  <li>Flat minima generalise better.</li>
+</ul>
+
+<p><strong>Problem statement:</strong> We need to minimise the population risk and not just empirical risk. So, a learning algorithm should choose that global minima of the empirical risk which has the lowest test error.</p>
+
+<p>Since we do not have access to population risk, it is not clear how to solve the above problem.</p>
+
+<p>But there is one particular observation on which this paper relies. By relying on this observation, it gives a way to attack the above difficult problem.</p>
+
+<p>Therefore, this paper relies on the observation that SGD tends to find flat minima, and flat minima seem to generalise better.</p>
+
+<p>How to use this observation to attack the above problem? It says that, for SGD, only some particular “set” of minimas are stable. SGD depends on hyperparameters like learning rate and batch size. So for different values of these hyperparameters, different kinds of minima should be stable. E.g., if, for a bigger learning rate, flatter minima are stable (if LR and flatness of the minima found by SGD are proportional), then we can find more flatter minima by increasing the learning rate. And more flat minimas may generalise even better than the minima which are less flat.</p>
+
+<p>This observation motivates the authors to find an answer to the question: Which global minima are stable for different values of hyperparameters of an optimisation algorithm?</p>
+
+<p>Stable global minima are those minimas which optimisers can converge to. To define the stability of a particular global minima x* mathematically, this paper considers the behaviour of SGD near x<em>, so that the function “f” which is being minimised, can be approximated via Taylor expansion. f is expanded up to the second-order Taylor polynomial around x</em>. This second-order Taylor polynomial is also called a quadratic approximation of f near x*. Because of this approximation, analysis of convergence becomes very easy because now we are dealing with the optimisation of a quadratic function instead of some highly complex function.</p>
+
+<p>We need to first define stability. Authors uses “linear stability”. Linear stability is defined for a linear dynamical system.</p>
+
+    </div>
+    
+     <!-- add a logic to only show if there is citation in a post -->
+    <div id='bibliography'>
+        <div class='wrap'> 
+             <!-- <p>References:</p> -->
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+
+</div>
+  </body>
+</html>

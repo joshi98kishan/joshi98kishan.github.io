@@ -1,0 +1,393 @@
+<!doctype html>
+<html> <!-- use lang attr in html tag -->
+
+  <head>
+    <title>Brief Overview of G-Ramp - Image Classification</title>
+    <meta charset="utf-8" />
+    <meta name='author' content='Kishan Joshi' />
+    <meta
+        name="description"
+        content="I write blogs on maths and AI." />
+    
+    <link rel='shortcut icon' href='/assets/images/favicon-16x16.png' />
+    
+    <!-- for responsive webpage -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/trac.css" />
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Brief Overview of G-Ramp - Image Classification</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Brief Overview of G-Ramp - Image Classification" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument." />
+<meta property="og:description" content="Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument." />
+<link rel="canonical" href="http://localhost:4000/g_ramps/1/brief_overview_image_classification.html" />
+<meta property="og:url" content="http://localhost:4000/g_ramps/1/brief_overview_image_classification.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-10-09T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Brief Overview of G-Ramp - Image Classification" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-10-09T00:00:00+05:30","datePublished":"2026-10-09T00:00:00+05:30","description":"Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument.","headline":"Brief Overview of G-Ramp - Image Classification","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/g_ramps/1/brief_overview_image_classification.html"},"url":"http://localhost:4000/g_ramps/1/brief_overview_image_classification.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- {# % include mathjax.html %} -->
+  </head>
+
+
+
+  <body>
+    <!-- <nav>
+    <a href = "/"> Blog </a>
+    <a href = "/about"> About </a>
+</nav> -->
+
+<div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'>Blog</a></li>
+        <li><a href='/g_ramps'>G-Ramps</a></li>
+        <li><a href='/drafts'>Drafts</a></li>
+        <li><a href='/about'>About</a></li>
+    </ul>
+</div>    
+    <div class='content'>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>Brief Overview of G-Ramp - Image Classification</h1>
+            <!-- <h4></h4>-->
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Last Updated</h3>
+                    <p>09 October 2026</p>
+                </div>
+            </div> 
+
+            <!-- Below div is not required. -->
+            <!-- <div class='clear'></div> -->
+        </div>
+    </div>
+    <div class='wrap article'>
+        <p><em>Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument.</em></p>
+
+<p><em>Between any two adjacent steps, either it will be explicitly mention that there are missing steps between these two steps. Or there may not be such mention of missing steps. Similarly, there may or may not be explicit mention of missing parts of any already mentioned steps.</em>
+<em>Text in square brackets ‘[]’ is used to mention about missing steps or about missing parts of already mentioned steps.</em></p>
+
+<p><em>A step title below starts with “LS” meaning logical step. Steps should be numbered like “LS#1 …”. But putting numbers during development creates difficult because it is not straightforward how to increment the numbers when steps are added in between. So, until a g-ramp is complete and contain all the steps, steps are not numbered.</em></p>
+
+<h3 id="brief-overview">Brief Overview</h3>
+<ul>
+  <li><strong>Prerequisite</strong>
+    <ul>
+      <li>Just curiosity to master AI algorithms and nothing else. We are assuming that anyone who is curious to master AI must be already good at school-level maths. This assumption is very weak and there are high chances of it being true.</li>
+      <li>You do not even need to revise school-level maths. We will gonna cover it enough that you will revise it while going through a ramp.</li>
+    </ul>
+  </li>
+  <li><strong>Main Problem</strong>
+    <ul>
+      <li>We wanna let computer do image classification like a human.</li>
+      <li>For simplicity, let’s scale down the problem where given an image of either a dog or a cat, a computer should be able to correctly classify the image and assign a label - dog or cat.</li>
+      <li>[Explain why image classification via a computer?]</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p><em>[steps leading to next and first solution of main problem which is hard coding]</em></p>
+
+<hr />
+
+<ul>
+  <li><strong>LS - Hard Coding</strong>
+    <ul>
+      <li>One way to do image classification is to create a computer program where rules are hard coded.</li>
+      <li>[About traditional Computer Vision]
+        <ul>
+          <li>hand-coded features etc.</li>
+          <li>Ref. Szeliski’s book</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Introducing Machine Learning</strong>
+    <ul>
+      <li>[Add an explanation how hard coding is difficult because there are exponentially large number of rules and one can not write each of them in a program. Hence, hard coded algorithm won’t do image classification accurately or it would be just too much laborious to create a correct algorithm. Explain that image classification is hard and motivate the need for better solution.]</li>
+      <li>How humans learn to do image classification? By looking at many examples before they can accurately do image classification. Can we have a way where a computer learns by itself just like a human?</li>
+      <li>[add explanation that we need to have a dataset for computer to learn]
+        <ul>
+          <li>We can have a “dataset” of images where each image has a “label” representing the “class” of that image.</li>
+        </ul>
+      </li>
+      <li>[search for dataset for problem at our hand, i.e., for cat-dog image classification.]</li>
+      <li>Now we need to think of whether we can create a “learning” algorithm which takes this dataset as input and outputs another algorithm which contain learned rules.</li>
+      <li>[Explain that we need mathematics to build these two algorithms by taking help from this blog - <a href="/blog/2025/10/27/AI-is-maths-formulation/" target="_blank">AI - Mathematical Formulation of Intelligence</a>. Conclusion should be that we need to use mathematics to do learning and to do action of “classification”. So, learning, and action (classification) algorithms are nothing but implementation of mathematics.]</li>
+      <li>This mathematical formulation of intelligence is called “Machine Learning” or “ML” in short.</li>
+      <li>And action algorithm is generally called “model” in machine learning because it models the real but unknown function of nature, in our case it is the human ability to classify things.
+        <ul>
+          <li>And in ML, “learning” is also called “training”.</li>
+        </ul>
+      </li>
+      <li>[Explain how to think of coming up with these mathematical functions? Which include first representing dataset in mathematical terms. Then from there come to the conclusion that firstly one need to think of a structure of a model and then think of how to create a learning algorithm which can output appropriate model.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Linear Model</strong>
+    <ul>
+      <li>[explain how this is the first model which we should be thinking about]</li>
+      <li>We know about plane equation in mathematics.</li>
+      <li>What if there is a plane which separates the two classes.</li>
+      <li>To find such plane, means, finding appropriate slopes and intercept of the plane.</li>
+      <li>In ML terms, these slopes and intercept are called weights and biases. And for simplicity, we will be also calling biases as just weights.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Searching</strong>
+    <ul>
+      <li>Weights are real numbers. And there are many weights.</li>
+      <li>So, there are infinitely many possible values, weights can take.</li>
+      <li>How to find appropriate weight values out of infinite possibilities?
+        <ul>
+          <li>[explain that this is exactly what we mean by “learning”]</li>
+        </ul>
+      </li>
+      <li>So, now we are dealing with a search problem?</li>
+      <li>We need some way to determine whether we have reached to the solution or the appropriate values while searching.</li>
+      <li>Given the dataset, we can calculate “accuracy” corresponding to each set of weight values.
+        <ul>
+          <li>[explain accuracy]</li>
+        </ul>
+      </li>
+      <li>So, we are searching for weight values which gives maximum accuracy which is 100%.</li>
+      <li>That means, our search problem is nothing but an optimization problem. An optimization problem is a specific kind of search problem where we are looking for values which maximizes some score or minimizes some cost.</li>
+      <li>[Explain that given this optimization problem, next obvious solution is brute force search.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Efficient Searching</strong>
+    <ul>
+      <li>[explain the difficulty or inefficiency of brute force search]</li>
+      <li>[Since, real values are involved, conclude that we can think of optimization algorithms which uses continuous functions and finds its minima or maxima analytically i.e., by solving the equation. Which is exponentially much easier than brute force search.]</li>
+      <li>We have learned about finding minima or maxima of a continuous function in the school.</li>
+      <li>But we need a differentiable function.</li>
+      <li>Accuracy is not differentiable.</li>
+      <li>Differentiable meaning there exist tangent and hence its slope at every point.</li>
+      <li>Accuracy function is a step function. It contain sharp corners. So, no tangent line exist at such corners and hence function is not differentiable.</li>
+      <li>So, we need differentiable function.</li>
+      <li>[come to the conclusion that we can use squared error function]
+        <ul>
+          <li>[may be we can explain it like this: we can have a distance function which calculates distance between current prediction and given label. Because its minima lead us to our solution.]</li>
+        </ul>
+      </li>
+      <li>[also introduce the terms “cost” or “loss”]</li>
+      <li>[Now talk about optimization by using this function, which involves checking for convexity, differentiation, and finding global minima. And also introduce the term “loss surface” while checking for convexity.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Non-Linearity</strong>
+    <ul>
+      <li>[explain problem with linear model by experimentation and by theoretically]</li>
+      <li>Find non-linear model</li>
+      <li>There are many ways a model can be non-linear.</li>
+      <li>By analyzing, one should find what kind of non-linearity an image classification problem has.</li>
+      <li>E.g. XOR like non-linearity.</li>
+      <li>Image classification has very arbitrary non-linearity, very random. Classes are so intermingled between each other. Talked about it in this blog - <a href="/drafts/2026-03-11-understanding-nonlinearity-imageclassification.html" target="_blank">Understanding Non-Linearity in Image Classification</a>.</li>
+      <li>Because class is determined by a particular wave like pattern and this pattern could appear anywhere, at any scale, which also leads to classes appearing next to each other and intermingled. Because only <em>subtle differences between neighboring pixel values</em>, a subtle wave pattern is the only differentiator between the classes. It is not about what pixels taking what values but it is only about particular differences between neighboring pixels.</li>
+      <li>Such non-linearity is similar to simple XOR like non-linearity. [Or also similar to non-linearity in shifter problem in Boltzmann machine paper?]</li>
+      <li>[now connect non-linearity to “features” or “representation”]
+        <ul>
+          <li>Features or representation terms are used interchangeably.</li>
+        </ul>
+      </li>
+      <li>[Define high-level or abstract and low-level representation]</li>
+      <li>[Explain how representation term came to use. From inspiration with brain and neuroscience?]
+        <ul>
+          <li>[Explain representation from brain point of view by analyzing our own mental processing]</li>
+          <li>When we see something e.g. a dog, we extract some abstract features of it unconsciously, its shape, height, color etc.</li>
+        </ul>
+      </li>
+      <li>Term “representation” is used because we are representing some information in a computer.</li>
+      <li>Lowest level of representation is nothing but arrays of pixels.
+        <ul>
+          <li>Low level features like pixel values contain lot of information which we do not need for the task of image classification. It contain information about the position, scale (wrt background), pose etc. of a dog or cat which actually does not differentiate between dog and cat.</li>
+        </ul>
+      </li>
+      <li>High level representation of a complex object like image is nothing but most compressed description of the object which is useful for a particular task like image classification. Compressed description can also mean discarding low level useless features (for the task) and only retaining abstract or high-level features which are useful for the task. Objects with same abstract features may have very different low level features e.g. pixel values.</li>
+      <li>We just need those high-level representation which are useful for the task.
+        <ul>
+          <li>[explain why we <em>need</em> to discard low-level features. One explanation is that high-level features makes the data linear so we can use linear model. But we can have one more explanation which should feel more natural. It could be like - it is a way to only attend to the information that is needed for the task.]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Non-Linear Model</strong>
+    <ul>
+      <li>Now the problem is that how do we create a model that can deal with such non-linearity.</li>
+      <li>[conclude that such model should be able to extract high-level representation]</li>
+      <li>[Now come to conclusion that to extract high-level representation, we need to have hidden units with “activation function”.]
+        <ul>
+          <li>Simplest activation function we can think of is a step or binary function.</li>
+        </ul>
+      </li>
+      <li>[Introduce the term “Neural Network” or “Artificial Neural Network” or “Multi Layer Perceptron” or in short “NN”, “ANN” or “MLP”. Also explain why “NN” and “activation function” as a name? inspiration from neuroscience.]</li>
+      <li>[Explain that to make NN arbitrary non-linear, one have to make it multi-layer, i.e., add more number of hidden layers]</li>
+      <li>[explain that we discovered “Universal Function Approximation” theorem]</li>
+      <li>Apparently, pattern recognition is one of the early problems which motivated the development of neural network.</li>
+      <li>[For reference, look for evolution of neural networks. Initially, NNs were tested on toy non-linear problems like XOR, shifter problem etc.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Learning in NN</strong>
+    <ul>
+      <li>[Follow the same procedure of training as we did for linear model]</li>
+      <li>Use squared error function as a cost function.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p><em>[Steps about many attempts one can try like competitive learning, BM, RBM etc. for training NNs]</em></p>
+
+<hr />
+
+<ul>
+  <li><strong>LS - Credit Assignment Problem</strong>
+    <ul>
+      <li>[Explain that cost function is not differentiable because of step activation function.]</li>
+      <li>And hence there is this popular “Credit Assignment Problem”.
+        <ul>
+          <li>[It looks like this problem is introduced in this ramp just for the sake of introducing it. We need to add more explanation such that we discover this problem by ourselves and not just introduce it anyhow because we want to introduce it.]</li>
+          <li>We don’t know which weight (or which neuron) to blame for the error. Or which weight causes this error. If we know this, then we can change that weight such that we reduce the error.</li>
+        </ul>
+      </li>
+      <li>How to fix this problem? Obvious solution is to think of smooth activation function.</li>
+      <li>[Introduce “Sigmoid” activation function and explain how we can think of choosing this activation function]</li>
+      <li>Now cost function over NN with sigmoid activation function is differentiable.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Non-Convexity</strong>
+    <ul>
+      <li>[Check for convexity]
+        <ul>
+          <li>Turns out loss surface is not convex.</li>
+        </ul>
+      </li>
+      <li>So, there is no single minima. It means equation of zero gradient have multiple solution.</li>
+      <li>Next obvious step is that we find these solutions.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Multivariate Differentiation</strong>
+    <ul>
+      <li>[To find the zero gradient equation, we have to do multivariate differentiation]
+        <ul>
+          <li>[explain all these concepts partial derivative, total derivative, gradient and jacobian]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Gradient Descent</strong>
+    <ul>
+      <li>[Explain that finding solution of zero gradient equation is impossible]</li>
+      <li>[now come to conclusion that we have to do gradient based optimization i.e., gradient descent]</li>
+      <li>[Explain that for gradient descent:]</li>
+      <li>[we have to first initialize the weights]</li>
+      <li>[then given the weight values, we have to use these values to calculate gradient]
+        <ul>
+          <li>[algorithm used to calculate the gradient is called “back propagation”]</li>
+        </ul>
+      </li>
+      <li>[explain “learning rate”]</li>
+      <li>[now explain training iterations and “epochs”]</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p><em>[steps about stochastic gradient descent (SGD), validation set, testing set, evaluation metric (e.g. accuracy), overfitting, underfitting, bias, variance, data preprocessing (e.g. normalization) etc.]</em></p>
+
+<hr />
+
+<p><br /><br /><br /></p>
+
+<ul>
+  <li><em>Note:- Put rest of the steps regarding improvement in training, model and cost function in “Advanced Classification Algorithm” ramp which will come after third ramp. Also deal with multi class classification problem in that ramp.</em>
+    <ul>
+      <li><em>Improvement in training of neural network</em>
+        <ul>
+          <li>There are problems in training “deep” networks via back propagation.
+            <ul>
+              <li>problems are like NN getting stuck in bad local minima, gradient flow problem like vanishing and exploding gradient etc.</li>
+            </ul>
+          </li>
+          <li>[to fix it, think of using kernel based ML algorithms]</li>
+          <li>[think of using layer-wise pre-training so that layers are better preconditioned before training end-to-end via backpropagation]</li>
+        </ul>
+      </li>
+      <li><em>Improvement in model</em>
+        <ul>
+          <li>[introduce convolution layer]</li>
+          <li>[introduce better activation function like ReLU which can lead to better end-to-end training via backpropagation. (ref: representation learning paper by Bengio et al, 2013)]</li>
+          <li>[introduce dropout layer]</li>
+          <li>[introduce normalization layers like batch normalization, layer normalization etc.]</li>
+          <li>[et cetera, et cetera…]</li>
+        </ul>
+      </li>
+      <li><em>Improvement in cost function</em>
+        <ul>
+          <li>[explain the problem with squared error]
+            <ul>
+              <li>Does not give proper weight to misclassification errors which are not serious vs which are serious.</li>
+            </ul>
+          </li>
+          <li>[introduce binary cross entropy and cross entropy loss]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /><br /><br /></p>
+
+<ul>
+  <li><strong>Take Away</strong>
+    <ul>
+      <li>Mastered an image classification algorithm</li>
+      <li>Which lead us to introduction and mastery of these topics
+        <ul>
+          <li>Image classification problem</li>
+          <li>Machine Learning</li>
+          <li>Linear model</li>
+          <li>Optimisation algorithm
+            <ul>
+              <li>Square Loss</li>
+              <li>Global optimisation</li>
+              <li>sgd</li>
+            </ul>
+          </li>
+          <li>neural network
+            <ul>
+              <li>representation</li>
+              <li>universal function approximation</li>
+            </ul>
+          </li>
+          <li>etc.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+    
+     <!-- add a logic to only show if there is citation in a post -->
+    <div id='bibliography'>
+        <div class='wrap'> 
+             <!-- <p>References:</p> -->
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+
+</div>
+  </body>
+</html>

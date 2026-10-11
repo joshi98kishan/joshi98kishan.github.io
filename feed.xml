@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-06-01T14:43:09+05:30</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Intuitive Understanding of GFlowNet</title><link href="http://localhost:4000/blog/2026/05/29/intuitive-understanding-gflownet/" rel="alternate" type="text/html" title="Intuitive Understanding of GFlowNet" /><published>2026-05-29T00:00:00+05:30</published><updated>2026-05-29T00:00:00+05:30</updated><id>http://localhost:4000/blog/2026/05/29/intuitive-understanding-gflownet</id><content type="html" xml:base="http://localhost:4000/blog/2026/05/29/intuitive-understanding-gflownet/"><![CDATA[<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Prerequisites:
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-10-11T20:25:10+05:30</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Intuitive Understanding of GFlowNet</title><link href="http://localhost:4000/blog/2026/05/29/intuitive-understanding-gflownet/" rel="alternate" type="text/html" title="Intuitive Understanding of GFlowNet" /><published>2026-05-29T00:00:00+05:30</published><updated>2026-05-29T00:00:00+05:30</updated><id>http://localhost:4000/blog/2026/05/29/intuitive-understanding-gflownet</id><content type="html" xml:base="http://localhost:4000/blog/2026/05/29/intuitive-understanding-gflownet/"><![CDATA[<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Prerequisites:
 - Basics of Directed Acyclic Graph (DAG)
 - Basic Probability
 
@@ -222,164 +222,7 @@ Which means input flow=output flow at all intermediate junctions \(s^{\prime}\):
   <li><a href="https://colab.research.google.com/drive/1fUMwgu2OhYpQagpzU5mhe9_Esib3Q2VR?usp=sharing" target="_blank">Colab notebook</a> by Emmanuel Bengio already mentioned above.</li>
 </ul>
 
-<p><em>Thank you for reading. Feel free to email me for any corrections.</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Prerequisites: - Basics of Directed Acyclic Graph (DAG) - Basic Probability]]></summary></entry><entry><title type="html">Understanding Non-Linearity in Image Classification</title><link href="http://localhost:4000/blog/2026/03/11/understanding-nonlinearity-imageclassification/" rel="alternate" type="text/html" title="Understanding Non-Linearity in Image Classification" /><published>2026-03-11T00:00:00+05:30</published><updated>2026-03-11T00:00:00+05:30</updated><id>http://localhost:4000/blog/2026/03/11/understanding-nonlinearity-imageclassification</id><content type="html" xml:base="http://localhost:4000/blog/2026/03/11/understanding-nonlinearity-imageclassification/"><![CDATA[<!-- New Explanation for this topic is at the end of this blog in draft folder - "2026-03-05-understanding-linearity-nonLinearity" -->
-<p><span style="color: blue;"><em><strong>Note:-</strong> Incomplete blog. May complete it at some time in the future.</em></span></p>
-
-<h3 id="introduction">Introduction</h3>
-<p>This has always bugged me that how image classification data is non-linear or not linearly separable. To understand this, we need to first understand the linear classifier.</p>
-
-<h3 id="linear-classifier">Linear Classifier</h3>
-
-<p>Given a sample: \(y\), \([x_1, x_2, ...., x_k]\), linear classifier first calculates this</p>
-
-\[z = w_1x_1 + w_2x_2 + ..... + w_kx_k + b\]
-
-<p>Then it classifies:</p>
-
-<p>if \(z&gt;0\) then predict \(1\)
-else        predict \(0\)</p>
-
-<p>Linear classifier assigns weights to each feature. Then z is calculated via weighted sum of features and then bias is added to that weighted sum to calculate z.
-z is a summation of k+1 real numbers. Classification is done on the basis of the sign of z.</p>
-
-<p>Lets understand linear classifier via a feature space where each axis corresponds to each feature. Moving in the feature space corresponds to moving along multiple axes, each with different distances. Distance along a axis is the value of the corresponding feature.</p>
-
-<p>A linear classifier divides this space in two halves (here we do not care whether these halves are equal or not). Each half corresponds to a class, i.e., a point in one half corresponds to a class and a point in other half corresponds to another class.</p>
-
-<p>One important defining characteristic of the linear classifier is that these halves are contiguous. Lets understand it. You pick a axis \(i\). Move from one end of this axis (-infinity) to another end (+infinity) while fixing the position in the other axes. [add example of such movement in 2d space. Fixing y and moving “parallel” to x axis]</p>
-
-<p>Initially, the point is in one of the half. As movement continues, there comes a “boundary point” beyond which other half begins which then continues to positive infinity. 
-z in this case is the function of single variable:</p>
-
-\[z = w_ix_i + c\]
-
-<p>\(c\) is determined by fixed positions in other axes, their corresponding weights, and the bias term. Continuity of the half can be understood easily from this equation of line. Sign of \(z\) determines the half. Initially \(z\) is continuously of a particular sign then after the border point \(x_i=(-c/w_i)\), sign of \(z\) changes and remains same for the rest of the movement. This is true for any axis you pick for moving across.</p>
-
-<p>Given a picked feature, sign of the weight of that feature determines whether one is moving from negative class to positive class or vice versa. If that weight is positive then one is moving from negative class to positive class. Which is obvious because initial value is negative infinity and final value is postive infinity.</p>
-
-<p>[this para may not be needed]
-One another defining property of a linear classifier is that it “fixes” the direction of movement for a given feature, which depends on the sign of weight. Which means that for a given feature and the sign of its weight, large enough and small enough values of this weight corresponds to each class.</p>
-
-<p>Having said this. Let understand a linear classifier in one more way. Start with a point of one of the half of the linear classifier. Now change the features of this sample such that one moves towards the other half. Whether to increase a feature or decrease a feature depends on its weights and the current half. If one is moving from negative half to postive half, then you need to increase features with positive weights and decrease the features with negative weights.</p>
-
-<p>For positive half, positive features are relatively bigger than negative features. And vice versa for negative half.</p>
-
-<h3 id="circle-dataset">Circle Dataset</h3>
-<p>In this dataset, one can not find a linear classifier which perfectly classifies the classes. Because class is not defined by which particular feature should be relatively bigger than others. Class definition do not restrict particular features to be bigger or smaller rather it only restricts “vector length” where vector is defined by feature values. One class has bigger vector length than the other class.</p>
-
-<p>[define mathematically vector length]</p>
-
-<p>A given vector length does not fixes which feature should be bigger and which should be smaller. A given vector length could come by increasing “any” set of features and decreasing accordingly other features.</p>
-
-<p>Lets understand this by first</p>
-
-<p>A linear classifier fixes what feature should be big enough and what feature should be small enough for a particular half of a class. But samples of each class of this dataset are distributed such that it does not care which particular feature should be big and which feature should be small. It only care about the “set” of values. where elements of this set are the feature values. This set is permutation invariant that is a given element could come from any feature. It cares about the overall magnitude of the vector represented by this set.</p>
-
-<p>Talk about logistic regression. That is, it finds the classifier with least error and not least accuracy. Which means that it tries to reduce the distance of misclassified points from the decision boundary as much as possible. After convergence, logistic regression returns the best classifier in terms of this error. That is, one can not find a better classifier than this in terms of error. If there is no outlier, then this best error classifier is also the best classifier in term of accuracy. Having said this, for this dataset, the LR classifier is the best which can separate the two classes in terms of both error and accuracy.</p>
-
-<p>Lets consider this instance of a circle dataset and its corresponding best logistic regression classifer. 
-[paste the plot here which contains circle dataset and linear classifier with positive and negative weight]</p>
-
-<p>Check this. Even the best linear classifier fails to classify and it is barely better than random classifier. Because linear classifier is inherently limited for this non-linearly separable dataset.</p>
-
-<p>Not only class label depends only on the permutation invariant set but also only on absolute values of the set elements. While linear classifier fixes the weight to each feature which in turn fixes the big enough and small values of a feature to different classes.</p>
-
-<p>So, this dataset has properties which does not align with how linear classifier works.</p>
-
-<h3 id="image-classification">Image Classification</h3>
-<p>Image classification data is similar to circle dataset in the sense that class definition do not fix which features should be bigger and which should be smaller. Rather it depends on the “pattern” which could come from any set of features being bigger than other features.</p>
-
-<p>Pattern here means the particular manner the pixel changes in some area of a image. Area where this pattern occur could be anywhere in the image. This area could be a small part of the image or could span the whole image. E.g. the pattern for dog would be different than the pattern for cat.
-Also this pattern could occur either with relatively larger pixel values than the non-pattern pixels or vice versa. If pattern pixels are relatively larger and as mentioned above this pattern could occur anywhere or could have any size then for some images this pattern will hit the negative weights and for other images it will hit the positive weights.</p>
-
-<p>A class definition relies on just the shape of wave and do not care where this wave occurs, how big this wave occurs, or in what orientation it occurs. Meaning of wave here is with respect to the change in pixel values and not which particular pixel changes. Shape of the wave refers to the particular way this change in pixel values occurs as one moves across the image. This wave shape is a unique characteristic of a class and defines a class. A dog image will have a particular wave shape and a cat image will have a different wave shape. This particular change in pixel values could occur fastly or slowly, i.e., could occur in a small region of an image or could cover the whole image.</p>
-
-<p>class is only a function of a pattern and this pattern could come from any subset of features (pixels in these case). This pattern over subset of pixels could span the whole image or could just reside in a small area of an image.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note:- Incomplete blog. May complete it at some time in the future.]]></summary></entry><entry><title type="html">Optimization for ML</title><link href="http://localhost:4000/blog/2025/11/12/optimization-for-ml/" rel="alternate" type="text/html" title="Optimization for ML" /><published>2025-11-12T00:00:00+05:30</published><updated>2025-11-12T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/12/optimization-for-ml</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/12/optimization-for-ml/"><![CDATA[<p><span style="color: blue;"><em><strong>Note:-</strong> This is only the first draft of this blog.</em></span></p>
-
-<h3 id="introduction">Introduction</h3>
-
-<p>Machine Learning is a category of algorithms which allows the computer to find a <em>function</em> on its own (without needing to explicitly programme the function) that completes a particular <em>task</em>. When the algorithm finds a desired function, then it is said that the machine has <em>learned</em> to complete a particular task. Machine learning is framed as an optimization problem, and because of this framing, a computer could learn to complete a task <em>on its own</em>. Once it is framed as an optimization problem, then one can use existing optimization algorithms. And we know that the optimization algorithm can find a <em>solution</em> (defined below) to the optimization problem on its own. So, this mystery of “computer learning to complete a task on its own without being explicitly programmed” gets solved when we realize that ML is nothing but an optimization problem.</p>
-
-<!-- Optimization problems and their corresponding algorithms are highly intuitive (that is, very easy to understand and a feeling that you know it already). And when ML is considered as nothing but an optimization problem then *all* the ML algorithms become intuitive. -->
-
-<!-- It is hard to visualize spaces beyond three dimension and almost all the real problems deals with higher dimensional spaces. So, Another motivation to learn about optimization algorithms is that it will teach me how to work effectively with high dimensional spaces.  So, by learning optimization algorithms, one can  -->
-
-<h3 id="optimization">Optimization</h3>
-
-<p>For an optimization algorithm to find a solution on its own, one has to first define an objective function. An objective function takes the candidate solution as input and outputs a number denoting how well the desired objective is achieved. The output can either represent the goodness or badness, depending on how the objective function is defined. If output represents the goodness of the input (candidate solution), then input is <em>searched</em> for such that it maximises the objective function. The input which maximises the objective function is called a “solution” of the optimization problem.</p>
-
-<h3 id="ml-as-an-optimization-problem">ML as an Optimization Problem</h3>
-
-<p>As mentioned in the first para, ML is framed as an optimization problem. The task which an ML algorithm learns to complete is used to define an objective function. The input to this objective function is nothing but a candidate function to complete a given task. The output of this objective function (in most cases) represents the badness, meaning it represents how badly the given candidate function (input of objective function) completes the task. So, the optimization algorithm finds a function which least badly completes the task, i.e., the <em>solution</em> of the optimization problem completes the task well.</p>
-
-<!-- And it learns it by looking at the data. -->]]></content><author><name></name></author><summary type="html"><![CDATA[Note:- This is only the first draft of this blog.]]></summary></entry><entry><title type="html">Linear Algebra for ML</title><link href="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/" rel="alternate" type="text/html" title="Linear Algebra for ML" /><published>2025-11-10T00:00:00+05:30</published><updated>2025-11-10T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml</id><content type="html" xml:base="http://localhost:4000/blog/2025/11/10/linear-algebra-for-ml/"><![CDATA[<p><span style="color: blue;"><em><strong>Note:-</strong> This is only the first draft of this blog.</em></span></p>
-
-<!-- I am currently reading a book titled "Linear Algebra" by Cherney et al. I will be editing this blog as my understanding about linear algebra grows. I will remove this note once I feel this blog is complete. -->
-
-<h3 id="context">Context</h3>
-<p><em>If you haven’t read previous blogs, here is some context:</em></p>
-
-<p>I want to become a fundamental AI researcher, and this is my sole goal. And I am preparing myself for it by writing blogs. I have explained in the previous blogs that blogging is perfect for me for two reasons - it helps me to properly understand a topic, and at the same time, it allows me to give a service of education.</p>
-
-<p>I am currently only good at school-level mathematics. So, <strong>from this level, whatever more topics are required for the goal, I will be mastering them, and at the same time, I will write a blog on each topic mentioning all my understanding of that topic</strong>. I am currently in a position where I know what topics I should learn, how I should learn them, and how well I should know those topics. These topics are divided into two major groups. The first group of topics is nothing but the maths required for Machine Learning (a way to implement AI), which I simply call “maths fundamentals”. That is, all the maths which is required to become a great AI researcher. The second group of topics will be on AI literature.</p>
-
-<p>Maths fundamentals is beyond the school-level mathematics. Subjects in maths fundamentals are linear algebra, probability, optimisation and other miscellaneous topics. Each subject in itself is a group of topics, and hence there will be a series of blogs for each subject. And then I will be writing a series of blogs on AI literature.</p>
-
-<h3 id="introduction">Introduction</h3>
-
-<p>This is the first blog in the series of linear algebra (LA) for ML blogs. This blog is about -</p>
-
-<ul>
-  <li>Why is LA important?</li>
-  <li>Spirit of LA.</li>
-</ul>
-
-<h3 id="why-is-la-important">Why is LA important?</h3>
-
-<p><em>I have planned to write a dedicated blog on the importance of LA. I will link it here once I complete writing it. Below is a short overview of what I currently know about this.</em></p>
-
-<p>LA is important because of these reasons:</p>
-
-<ul>
-  <li>It is easy to find a linear relationship. There is only one solution, you just find that particular solution. That is, there is only one way input and output can have a linear relationship. On the other hand, there are many ways you can find a non-linear relationship between them.</li>
-  <li>It is highly interpretable. You know which variables impact how much to the result.</li>
-  <li>There are many real-world phenomena which are inherently linear. E.g., the first half of the computation by a biological neuron is linear. And this is why artificial neurons are the way they are – a linear function followed by a non-linear function.</li>
-</ul>
-
-<h3 id="spirit-of-la">Spirit of LA</h3>
-<p>Any subject has a particular spirit which is the cause of the origination of all the concepts of that subject. In this section, I want to talk about the spirit of LA and how every concept of LA originates from that spirit.</p>
-
-<p>When you know why the particular concept exists, then you don’t need to memorise it. Because when you know why a concept exists, then this “why” triggers your problem-solving mindset. And since you have read that concept at least once, this helps you easily solve that problem for yourself. You become the creator of that concept. That concept feels natural to you, and you can create it on the fly whenever you forget the details of it. “Natural” here means that you know the concept without needing to memorise it, and you just need a way to bring it to your awareness.  And that way is to know the problem itself, i.e., why that concept exists.</p>
-
-<p><em>Working on the below grey colored text, which I will move to a dedicated blog.</em>
-<span style="color: grey;">The whole subject becomes a graph where nodes are concepts (or solutions) and edges are ‘why’ questions (or problems). And every node can be traced back to a root node, which is the spirit of the subject. And as you move towards the root, concepts become easy to understand. And the root concept, the spirit, is the easiest concept. To get the feel of its easiness, consider the concepts of addition, subtraction, etc., they are so easy that they are hard to forget.</span></p>
-
-<p><span style="color: grey;">Once you understand the root, then you will naturally understand all the concepts. What this means is that you do not need to memorise all the concepts, either you will know them by heart, or if you do not remember them, then you will be able to recreate them on the fly.  After understanding the root, you will know which problems originate from it, which triggers your problem-solving mindset. That is, you will begin to solve the problem for yourself, you will begin to find the concept which solves this problem. And if you also read the solution (the concept which actually connects the edge) from some resource like a book, then it becomes easy to solve the problem yourself and arrive at that concept. Similarly, from that concept, the same process repeats. You will know the problem originating from this concept, and then you will solve it. By repeating this process, you will recreate all the concepts of that subject.</span></p>
-
-<p><span style="color: grey;">And later on, whenever you are stuck with some problem, you do not need to remember its solution, you can create the solution on the fly. You will create it easily because you will have some vague memory of the solution. You will start from whichever node you remember and build a solution for that problem. And if you do not remember intermediate nodes to that solution node, then you will definitely remember the root node, from where you can build your solution by first building the intermediate nodes.</span></p>
-
-<p><span style="color: grey;">When you look at the subject as such a graph, then the whole subject looks like one unit. That is, every concept is coherently connected to each other. When you try to create the graph for yourself starting from the root node, you will know that the rest of the nodes are the only way one could create the graph of the subject.</span></p>
-
-<p>While reading the Cherney et al. LA book, I found the spirit of LA, which they have distinctively highlighted.</p>
-
-<blockquote>
-  <p>“LA is the study of vectors and linear functions.” [cite Cherney et al. LA book]</p>
-
-</blockquote>
-
-<p>A function is a <em>linear</em> function if it follows this:</p>
-
-\[T(u+v) = T(u) + T(v)\]
-
-\[T(cu) = cT(u)\]
-
-<p>where \(c\) is a scalar.</p>
-
-<p>What I currently think is that even the concept of “vector” stems from the concept of “linear function” (also called “linear map”, “linear mapping”, “linear transformation” or “linear operator”).</p>
-
-<p>So, “linear function” is the spirit of LA, or it is the root concept of LA which defines LA. From “linear function”, all the concepts of LA originate but in the form of a tree data structure. That is, there are some concepts, namely “vector”, “vector space” and “matrix”, which directly originate from the root and hence are at the first level of depth from the root. A vector is nothing but the input or output of a linear function. A vector space is nothing but the space of all possible inputs or the space of all possible outputs. And a matrix is one way to represent a linear function, or it is a way to represent a collection of vectors.</p>
-
-<p>Then from the first level, concepts originate which are at the second level of depth from the root. Concepts at this second level are eigenvector, eigenvalue, determinant, SVD, PCA and all other concepts of LA.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note:- This is only the first draft of this blog.]]></summary></entry><entry><title type="html">Setting The Tone</title><link href="http://localhost:4000/blog/2025/10/28/setting-the-tone/" rel="alternate" type="text/html" title="Setting The Tone" /><published>2025-10-28T00:00:00+05:30</published><updated>2025-10-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/28/setting-the-tone</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/28/setting-the-tone/"><![CDATA[<p><span style="color: red;"><em>This blog is UNDER PROGRESS. I have overspent the time for writing this blog. And now I feel like I should first work on some more important blogs, and then I will continue this not-so-important blog. The first and last parts are almost complete. You will find grey-coloured text that is either redundant or contains ideas which I am yet to integrate with the main text. And also you will find silly grammatical mistakes because of two reasons. First, I am still learning English. Second, the mistakes which I could have avoided but still committed because I wanted to write fast and hence avoided conscious grammar checking. Later, when I continue working on this blog, I will have to use a grammar checker tool for unavoidable mistakes.</em></span></p>
+<p><em>Thank you for reading. Feel free to email me for any corrections.</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Prerequisites: - Basics of Directed Acyclic Graph (DAG) - Basic Probability]]></summary></entry><entry><title type="html">Setting The Tone</title><link href="http://localhost:4000/blog/2025/10/28/setting-the-tone/" rel="alternate" type="text/html" title="Setting The Tone" /><published>2025-10-28T00:00:00+05:30</published><updated>2025-10-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/28/setting-the-tone</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/28/setting-the-tone/"><![CDATA[<p><em>You will find gray-colored text that is either redundant or contains ideas that I am yet to integrate with the main text. And you will find grammar and spelling mistakes, as I haven’t used a grammar checker tool in this blog.</em></p>
 
 <h3 id="prerequisite">Prerequisite</h3>
 <p>I have written a blog titled - <a href="/blog/2025/10/27/AI-is-maths-formulation/" target="_blank">AI - Mathematical Formulation of Intelligence</a>. This blog explains how AI is only possible by running maths equations in the computer, which motivates me and will motivate others to first master maths in order to do AI research.</p>
@@ -634,7 +477,7 @@ Or other way was by digging the recent papers, so by this approach, RBM was the 
 <p>And some other blogs, which I think, I may post before writing maths blogs:</p>
 <ul>
   <li>A blog about how now I look at machine learning. In one line, I look it as maths equations running on data to extract intelligence out of it in term of parameters (training). And then using these intelligence to achieve goals (inference). This blog will talk about ML in a very unique and general (covering all types of ML algorithms) way, showing how tools from “maths fundamentals” are used on “data” for training and inference.</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[This blog is UNDER PROGRESS. I have overspent the time for writing this blog. And now I feel like I should first work on some more important blogs, and then I will continue this not-so-important blog. The first and last parts are almost complete. You will find grey-coloured text that is either redundant or contains ideas which I am yet to integrate with the main text. And also you will find silly grammatical mistakes because of two reasons. First, I am still learning English. Second, the mistakes which I could have avoided but still committed because I wanted to write fast and hence avoided conscious grammar checking. Later, when I continue working on this blog, I will have to use a grammar checker tool for unavoidable mistakes.]]></summary></entry><entry><title type="html">AI - Mathematical Formulation of Intelligence</title><link href="http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation/" rel="alternate" type="text/html" title="AI - Mathematical Formulation of Intelligence" /><published>2025-10-27T00:00:00+05:30</published><updated>2025-10-27T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation/"><![CDATA[<p><em>Ideas presented in this blog are from my own understanding. Feel free to email me for any corrections.</em></p>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[You will find gray-colored text that is either redundant or contains ideas that I am yet to integrate with the main text. And you will find grammar and spelling mistakes, as I haven’t used a grammar checker tool in this blog.]]></summary></entry><entry><title type="html">AI - Mathematical Formulation of Intelligence</title><link href="http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation/" rel="alternate" type="text/html" title="AI - Mathematical Formulation of Intelligence" /><published>2025-10-27T00:00:00+05:30</published><updated>2025-10-27T00:00:00+05:30</updated><id>http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation</id><content type="html" xml:base="http://localhost:4000/blog/2025/10/27/AI-is-maths-formulation/"><![CDATA[<p><em>Ideas presented in this blog are from my own understanding. Feel free to email me for any corrections.</em></p>
 
 <h3 id="introduction">Introduction</h3>
 <p>There is an aspiring AI Researcher named Aire (appended ‘e’ because it makes the name sound like a name of a person. Pronounce it as “air”). He once came to know about AI. And since then it has fascinated him a lot. The fact that it is a revolutionary technology and can significantly improve human lives in <em>all the ways</em> excites him. To say the least, AI has already begun to positively disrupt these areas: healthcare, education, agriculture, science and engineering, waste management, driving assistance, etc. And to say a bit more, AI will also help in far-fetched problems like finding habitable planets.</p>

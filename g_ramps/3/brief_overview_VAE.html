@@ -1,0 +1,538 @@
+<!doctype html>
+<html> <!-- use lang attr in html tag -->
+
+  <head>
+    <title>Brief Overview of G-Ramp - Variational Autoencoder</title>
+    <meta charset="utf-8" />
+    <meta name='author' content='Kishan Joshi' />
+    <meta
+        name="description"
+        content="I write blogs on maths and AI." />
+    
+    <link rel='shortcut icon' href='/assets/images/favicon-16x16.png' />
+    
+    <!-- for responsive webpage -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/trac.css" />
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Brief Overview of G-Ramp - Variational Autoencoder</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Brief Overview of G-Ramp - Variational Autoencoder" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument." />
+<meta property="og:description" content="Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument." />
+<link rel="canonical" href="http://localhost:4000/g_ramps/3/brief_overview_VAE.html" />
+<meta property="og:url" content="http://localhost:4000/g_ramps/3/brief_overview_VAE.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-10-10T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Brief Overview of G-Ramp - Variational Autoencoder" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-10-10T00:00:00+05:30","datePublished":"2026-10-10T00:00:00+05:30","description":"Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument.","headline":"Brief Overview of G-Ramp - Variational Autoencoder","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/g_ramps/3/brief_overview_VAE.html"},"url":"http://localhost:4000/g_ramps/3/brief_overview_VAE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- {# % include mathjax.html %} -->
+  </head>
+
+
+
+  <body>
+    <!-- <nav>
+    <a href = "/"> Blog </a>
+    <a href = "/about"> About </a>
+</nav> -->
+
+<div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'>Blog</a></li>
+        <li><a href='/g_ramps'>G-Ramps</a></li>
+        <li><a href='/drafts'>Drafts</a></li>
+        <li><a href='/about'>About</a></li>
+    </ul>
+</div>    
+    <div class='content'>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>Brief Overview of G-Ramp - Variational Autoencoder</h1>
+            <!-- <h4></h4>-->
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Last Updated</h3>
+                    <p>10 October 2026</p>
+                </div>
+            </div> 
+
+            <!-- Below div is not required. -->
+            <!-- <div class='clear'></div> -->
+        </div>
+    </div>
+    <div class='wrap article'>
+        <p><em>Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument.</em></p>
+
+<p><em>Between any two adjacent steps, either it will be explicitly mention that there are missing steps between these two steps. Or there may not be such mention of missing steps. Similarly, there may or may not be explicit mention of missing parts of any already mentioned steps.</em>
+<em>Text in square brackets ‘[]’ is used to mention about missing steps or about missing parts of already mentioned steps.</em></p>
+
+<p><em>A step title below starts with “LS” meaning logical step. Steps should be numbered like “LS#1 …”. But putting numbers during development creates difficult because it is not straightforward how to increment the numbers when steps are added in between. So, until a g-ramp is complete and contain all the steps, steps are not numbered.</em></p>
+
+<h3 id="brief-overview">Brief Overview</h3>
+<ul>
+  <li><strong>Prerequisite</strong>
+    <ul>
+      <li>It is assumed that you have gone through previous ramps - first and second ramp.</li>
+    </ul>
+  </li>
+  <li><strong>Main Problem</strong>
+    <ul>
+      <li>In the previous ramp, we have successfully created a gen AI algorithm - A simple AR model.</li>
+      <li>We have seen, it generates novel candidates.</li>
+      <li>But it also generates “non-candidate” \(x\).</li>
+      <li>[mention that we haven’t analyzed why AR sometimes fail to generate.]</li>
+      <li>But without analyzing we can guess what problem it can have.</li>
+      <li>Either it is not creating desired “less-spiky” (talked about this term in previous ramp. Need to come up with better name) distribution which leads to conditions which do not follow 2nd level representation and hence neural network can not generalize. [explain why? Because neural network are having input which are very different than what they are trained on. Distribution of input during training and during evaluation is very different.]</li>
+      <li>
+        <p>Or second reason we could tell that it is creating desired “less-spiky” distribution. Now neural network are still having unseen input but from “training data distribution” [explain in previous ramps, what we mean by this]. This is the case we know and we are expecting neural network to generalize to these cases [mention that this is called “out of distribution” generalization]. But it is not generalizing out of distribution. Which means, it is going to output not so desired “less-spiky” distribution and which is only going to worsen the problem.</p>
+      </li>
+      <li>In AR model, generation process is sequential where trained neural network is used iteratively. So, there are multiple chances where NN can have an input which is not from training data distribution. Initially, the input won’t be far from training data distribution because only one pixel value may be off. Once the NN have this input, it is going to output not-so desired distribution. Which increases the chance of next input being even further from training data distribution than previous input.</li>
+      <li>
+        <p>And this is how AR model is prone to generate non-candidate \(x\). Once it makes error at any point during generation, that error only increases the chance of making more errors. There is a compounding problem where initial error causes even more errors.</p>
+      </li>
+      <li>
+        <p>Compounding problem is there because of conditional probability distribution modeling. Such modeling only care about modeling the local behavior and ignoring its global effect. That is, it do not directly control whole \(x\) but instead just deals with local behavior and just expects that global behavior should come out right.</p>
+      </li>
+      <li>Don’t have control over what \(x\) will have non-zero probability.
+        <ul>
+          <li>It means a non-candidate \(x\) can also have non-zero probability.</li>
+        </ul>
+      </li>
+      <li>Apart from this problem, AR model has other problems too.
+        <ul>
+          <li>[it does not directly learn representation of the data]</li>
+          <li>Also slow in generation because it generates sequentially pixel by pixel.</li>
+        </ul>
+      </li>
+      <li>One can think of fixing the AR model’s limitation by having controlled “less-spiky” conditional distributions, instead of uncontrolled “less-spiky” distribution. And somehow tweak a neural network so that it can generalize out of distribution.</li>
+      <li>
+        <p>Let’s follow this trail of thought in some other ramp where we can create an advanced AR model.</p>
+      </li>
+      <li>We can think of one more obvious main problem, which we can deal with in this ramp. Main problem for this ramp is: <strong>We want a computer to do “problem-driven imagination” but we need to solve it via a different gen algorithm where we do not have the compounding problem in the first place</strong>.</li>
+      <li>Again we can try to solve this main problem for its concrete version where we need a computer to imagine digits in different handwriting.</li>
+      <li>But as mentioned in previous ramp, we want a solution for main problem and not just for its concrete version.</li>
+      <li>[Other option for “main problem” we can have whose solution can be a VAE algorithm is that “we want a model or algorithm which explicitly learn representation of the data”. May be later on, we can replace above main problem with this one.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Model With Conditional Independence</strong>
+    <ul>
+      <li>Compounding problem is there because whatever pixel value is sampled for a particular pixel affects the probability distribution over values of the next pixel.</li>
+      <li>Probability distribution of a pixel depends on previous pixel values.</li>
+      <li>How do we think of creating a new gen algo where we do not need conditioning in the first place?</li>
+      <li>Why we need conditioning on probability distributions?</li>
+      <li>
+        <p>Because they are dependent.</p>
+      </li>
+      <li>For that, we have to understand what is dependency and why there is dependency?</li>
+      <li>If we know the cause of dependency then may be we can try to remove the cause itself.</li>
+      <li>
+        <p>As we mentioned in previous ramp, cause of dependency is that we don’t know upfront which digit image’s pixel values we are sampling for.</p>
+      </li>
+      <li>In the case of digit gen problem, we can remove dependency only when we know upfront the class, then we can <em>assume</em> conditional independence. And this assumption is weak.
+        <ul>
+          <li>It means previous pixel values does not determine what value this pixel should take.</li>
+          <li>Probability distribution of a pixel remains same irrespective of what pixel values chosen previously.</li>
+        </ul>
+      </li>
+      <li>[After having above insight, test the insight formally]
+        <ul>
+          <li>Test will be successful, i.e. most of pixels will be approximately independent.</li>
+          <li>Few pixels (on edge) are not so independent but they do not matter in terms of preserving the second-level representation. And hence can be used to move the wave randomly and generate novel candidates.</li>
+        </ul>
+      </li>
+      <li>[explain why such insight exist]
+        <ul>
+          <li>For this we have to understand how this dataset could have come into existence. By looking at its problem-level representations, we can think that how such representation could have come into existence. Someone have decided to allow many people and call them one by one to select a digit randomly (reason for uniform distribution among digits). And write it in approximately same size at the center of a square blackboard with white chalk.</li>
+          <li>As mentioned in previous ramp, class or second-level representation in digit gen problem determine global structure.</li>
+        </ul>
+      </li>
+      <li>And we know each class is equally likely.</li>
+      <li>[explain that this let’s model \(T\) in a newer way]
+        <ul>
+          <li>We can break \(p(x)\) in a different way where first we need to sample class and then sample each pixel value independently.</li>
+        </ul>
+      </li>
+      <li>[now let’s build a gen algorithm with independent pixels per class and test its generation quality]
+        <ul>
+          <li>[we will get decent results]</li>
+        </ul>
+      </li>
+      <li>By using the second-level representation, we were able to build a model which explicitly take care of the global structure. Which is in contrast to AR model which only models local structure and only indirectly and hence not correctly deals with global structure.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Model With Conditional Independence But Without Supervision</strong>
+    <ul>
+      <li>We are assuming here that we will know labels of each candidate in a dataset.</li>
+      <li>But we want to solve a main-problem and not just its concrete version.</li>
+      <li>[now introduce “supervision” and explain that for many real problems like drug design, the kind of “supervision” we require can be next to impossible]
+        <ul>
+          <li>Because it is a manual task.</li>
+          <li>We can label a small unlabeled toy dataset of size like digit dataset.</li>
+          <li>But it is a laborious and hence not practical for large dataset. Not to mention, for real, complex, large datasets, label will be multidimensional because high-level representation will be multidimensional, making labeling even more laborious and difficult. Multidimensional because real world \(x\), e.g. real world image would contain lots of things, hence there will be too much to describe. To imagine such task, imagine labeling every frame of every video on YouTube.</li>
+          <li>And also for many real problems, we might not know what labels to attach to each candidate.</li>
+          <li>For some problems, only domain experts might know how to label but it would be even more time consuming process because there would be only few domain experts.</li>
+        </ul>
+      </li>
+      <li>
+        <p>So, most of datasets for real and complex problems are unsupervised.</p>
+      </li>
+      <li>Which means we won’t know class or higher-level representations for each \(x\) in dataset.
+        <ul>
+          <li>Not knowing higher-level representations of a \(x\) means not knowing what global structure it has.</li>
+        </ul>
+      </li>
+      <li>Having said this, now we want to solve the main problem with unsupervised dataset.</li>
+      <li>So, we should try to solve handwritten digit generation problem again from the beginning but this time we should not be using any labels at all. We should assume that we do not have labels in digit dataset in the first place. Not even in the form of ordering of images in a folder, i.e., all images are randomly shuffled in a folder and not in order where each class images come together.
+        <ul>
+          <li>We do not have any information through which we can find labels easily.</li>
+        </ul>
+      </li>
+      <li>
+        <p>For unsupervised digit dataset, how we would think of a gen algorithm which does not use conditional probabilities (conditioned on pixel values) at all.</p>
+      </li>
+      <li>When we analyze unsupervised digit dataset:
+        <ul>
+          <li>We will still find conditional independence.</li>
+          <li>What class each image corresponds to.</li>
+          <li>And we will find total number of classes.</li>
+          <li>[explain that this is some information about a \(x\) which is not available to us explicitly in the form of labels and it is hidden or latent and only come to our knowledge after manually analyzing it.]</li>
+        </ul>
+      </li>
+      <li>So, we know we can build a model without conditional probabilities i.e. by using independent probabilities.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Unsupervised Naive Model</strong>
+    <ul>
+      <li>But without labels, we can’t calculate conditional independent probabilities.
+        <ul>
+          <li>We can but it will be a laborious task of manually grouping images class wise.</li>
+        </ul>
+      </li>
+      <li>But we know it exists.</li>
+      <li>And after analysis, we can approximately find such probabilities because we will know that all images of each class follows almost same global structure.
+        <ul>
+          <li>So, we have to at least pick one image of each class and we can approximately find conditional independent probabilities by assigning dark pixels a probability distribution where probability mass is only over dark pixel values.</li>
+          <li>And similarly assigning bright pixels a probability distribution where probability mass is only over bright pixels.</li>
+          <li>And for this, we can easily manually pick one image of each class in contrast to picking all images of a class manually.</li>
+        </ul>
+      </li>
+      <li>Certainly such model is not close to modeling \(T\) perfectly. Because there is no handwriting variations.</li>
+      <li>It means we need to do more work than just picking one image of each class.
+        <ul>
+          <li>We can pick more images of each class and calculate probabilities but that would be same as modeling with labeled dataset as we pick more and more images. Because manually grouping images class wise is nothing but labeling them.</li>
+        </ul>
+      </li>
+      <li>And since we want to solve the main problem and not just its concrete version, we should assume that grouping images is just laborious or impossible, even if it is not really in handwritten digit problem.</li>
+      <li>So that, we can find an algorithm which really do not use any supervision at all because such algorithm would be useful to solve many real problems where we really do not have labels.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Unsupervised Learning and Cost Function</strong>
+    <ul>
+      <li>Naive model only generates one particular candidate per class.</li>
+      <li>To generate more candidates with different handwriting, we can easily think that pixels surrounding current particular candidate has to have non-zero probabilities.
+        <ul>
+          <li>[explain and show with some diagram and experiment by manually giving non-zero probability to surrounding pixels]</li>
+        </ul>
+      </li>
+      <li>[Also explain that our model is not flexible. We have “regularized” it by assuming conditional independence. Also explain that this regularization is good enough to only have the kind of higher-level representations we want. It means it can not overfit.]
+        <ul>
+          <li>The regularized model if trained on some number of candidates of each class, then it can only generate these candidates and those novel candidates which are “mix” [explain it more] of these same class candidates. But it simply can not generate a non-candidate \(x\).</li>
+          <li>[also explain the term “regularization” if not already explained in previous ramps]</li>
+        </ul>
+      </li>
+      <li>Above naive model is trained on one candidate of each class. So it only generate these candidates. And no novel candidates because only one candidate per class is used for training, so there can not be any mixing.</li>
+      <li>For the sake of understanding, let’s train our model on any two images per class. [We will see that only these two candidates per class are being generated and those novel candidates which are mix of these two candidates.]</li>
+      <li>
+        <p>[explain that, by looking more closely at above examples and unsupervised naive model, we understand that training means setting nonzero probabilities to candidates in training dataset in model’s probability distribution.]</p>
+      </li>
+      <li>And if we train our model on more and more candidates per class then it will generate more diverse novel candidates.</li>
+      <li>
+        <p>[may be we can add some of above explanation regarding regularization in the above step where we trained our model with labels]</p>
+      </li>
+      <li>In this sense, “best possible” model is a model which is trained on whole dataset which is same as the model trained by using labels.
+        <ul>
+          <li>[explain how it is the best possible model we can get, given the regularization]</li>
+          <li>Why best? Because it is trained on whole training data. So, model has seen all the possible handwriting variations which is available.</li>
+          <li>This makes the model to generate all possible candidates in the dataset and all possible novel candidates by mixing them.</li>
+          <li>Best possible model’s probability distribution and \(T\) is close as possible, given regularization.</li>
+        </ul>
+      </li>
+      <li>Above we decided to not manually pick more images per class so how do we train our model on whole dataset?
+        <ul>
+          <li>Where training our model means calculating conditional independent probabilities. Which also means setting nonzero probabilities for each training candidates in model’s probability distribution.</li>
+        </ul>
+      </li>
+      <li>This looks like a searching problem in real space, similar to what we dealt with in the first ramp.
+        <ul>
+          <li>[mention the difference between searching problem in this and first ramp. In first ramp, we searched for weights, here we are searching for probabilities. So, we have to take care of constrain that probabilities need to be between 0 and 1.]</li>
+        </ul>
+      </li>
+      <li>Can we do optimization like before?
+        <ul>
+          <li>For this, we need a differentiable function whose either minimas or maximas contain the solution - best possible model.</li>
+        </ul>
+      </li>
+      <li>
+        <p>This immediately reminds us of KL divergence (explained in second ramp). We can use KL divergence to calculate the difference between model and training data distribution and use this difference as a cost. Minima of this cost means model is as close as possible to training data distribution, which further means model is as close as possible to \(T\).</p>
+      </li>
+      <li>[introduce somewhere “supervised” and “unsupervised” learning]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Optimization</strong>
+    <ul>
+      <li>[now explain that we have to start training by initializing all probabilities randomly]
+        <ul>
+          <li>Also in this toy problem of handwritten digit generation, we know upfront that there will be 10 different second-level representations we need to take care. We won’t know this for more real and complex problem. But for now let’s just use this information.</li>
+          <li>So, we start with 10 sets of random conditional independent probabilities. Given this, we have some random model of \(T\).</li>
+        </ul>
+      </li>
+      <li>
+        <p>[And now explain that to calculate probability of given candidate, we have to marginalize across all “classes”. Because each class will have nonzero probability for each candidate.]</p>
+      </li>
+      <li>[Now explain how to optimize?]
+        <ul>
+          <li>[Talk about constraint in optimization and then about SGD]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - BMM</strong>
+    <ul>
+      <li>[We will end up binarizing the MNIST data for speed and create model for binarized data which we will call “Bernoulli Mixture Model”]</li>
+      <li>[BMM section of bishop’s ML book contains the explanation of why log likelihood is difficult to maximise for latent variable model.]
+        <ul>
+          <li>[I solved this out in the notebook.]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - GMM</strong>
+    <ul>
+      <li>[now to make a model for images having 8 bit color format, i.e., 256 pixel values, we will have to come up with multivariate Gaussian distribution and then GMM, otherwise training a model for 8 bit color format data is very slow]</li>
+      <li>[first explain Gaussian or Normal distribution]</li>
+      <li>[now explain Multivariate Gaussian/Normal (MVN)]
+        <ul>
+          <li>[this introduces you to modeling continuous \(x\)]</li>
+          <li>[We have to introduce correlations very naturally. It means it gonna involve some steps before one can introduce correlations. We can’t just directly drop it because it is unintuitive. And hence should not be motivated in a manner where you introduce something first and then explains them why it matters. And then let learner figure out how one must have come up with it in the first place.]</li>
+        </ul>
+      </li>
+      <li>[after explaining Gaussian distribution and MVN, now explain GMM]
+        <ul>
+          <li>In GMM, a digit class distribution is modeled by MVN.</li>
+          <li>Note that this is not as flexible as AR model because it can only have one mode.</li>
+          <li>If an MVN is modeling a digit class distribution then to fit the distribution properly, highest probability should correspond to global structure because global structure is same across the distribution. As variation from global structure increases, probability drops. Anything which varies from global structure a lot, will have very low probability.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - MFA</strong>
+    <ul>
+      <li>[now to make model more efficient, we will be coming with FA and MFA]</li>
+      <li>Factor Analysis (FA)
+        <ul>
+          <li>“FA can be thought of as a low-rank version of a Gaussian distribution” (book2).</li>
+        </ul>
+      </li>
+      <li>Mixture of Factor Analysis (MFA)
+        <ul>
+          <li>can be thought of as efficient version of GMM.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - NN for Likelihood</strong>
+    <ul>
+      <li>[we will notice that we are not getting crisp generated candidates for digit gen problem]</li>
+      <li>[also mention that since we want to solve the main-problem and not just concrete version, we should be testing our model on more complex or more real dataset or distribution like face images or CIFAR dataset.]
+        <ul>
+          <li>[introduce these datasets]</li>
+        </ul>
+      </li>
+      <li>[after testing on these complex datasets, we will be getting worse results, i.e., more blurry generated candidates]</li>
+      <li>[this results immediately gives us the idea about the core problem. Until now, our model only assumed finite number of higher-level representations (more specifically second-level representation in digit dataset).]
+        <ul>
+          <li>It means per latent value we are trying to model a lot of variations.</li>
+        </ul>
+      </li>
+      <li>[now explain that the obvious solution is to consider a little lower level representation as latent values]</li>
+      <li>[now explain that this makes total number of latent values exponential]
+        <ul>
+          <li>[explain that we will use such level of representation or latent value, such that we will have at most one candidate which a latent value describes in the dataset.]</li>
+          <li>Such representation will make the generated candidate crisp.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Which means that “likelihood” (will be introduced in above steps if not already) \(p(x \vert z)\) which is an MVN will have a corresponding candidate as a mean parameter.</p>
+      </li>
+      <li>[since number of latent values are exponential, explain that we can not have exponential number of parameters]</li>
+      <li>Problem is that we need mean parameters which are nothing but an appropriate candidate corresponding to each latent value.</li>
+      <li>[now explain that this very easily give us the idea that we can do machine learning and can learn a function to map latent variables \(z\) to \(x\)]</li>
+      <li>[now explain that this mapping will be non-linear, therefore we will be needing a neural network]</li>
+      <li>This looks like FA with neural network.
+        <ul>
+          <li>“We call this “nonlinear factor analysis”.” (murphy’s book2)</li>
+          <li>[Ref: sec. 28.3.6 of murphy’s book2]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p><em>[steps which leads to assuming prior over latent variables. Which includes steps where we do not assume prior, which may lead to vanilla autoencoder. And later, when we assume prior, we get variational autoencoder.]</em></p>
+
+<hr />
+
+<ul>
+  <li><strong>LS - MLE</strong>
+    <ul>
+      <li>[now talk about optimization of this new model with neural network]</li>
+      <li>[About intractability of MLE and about can’t use gradient descent]</li>
+      <li>[Solution: Learning with the help of ELBO and EM algorithm]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Variational EM</strong>
+    <ul>
+      <li>[\(p(z \vert x)\) can’t be calculated]</li>
+      <li>[we have to use Variational EM]
+        <ul>
+          <li>Variational EM relies on approximate posterior distribution - \(q(z \vert x)\).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - NN For Approximating Posterior</strong>
+    <ul>
+      <li>[explain the use of NN for q and introduce amortized variational inference]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Generalized EM</strong>
+    <ul>
+      <li>[Maximum value in variational EM steps can’t be calculated]</li>
+      <li>Only values can be increased via gradient update which is apparently called Generalized EM (refer Hinton’s paper and also PMLR book).</li>
+    </ul>
+  </li>
+  <li><strong>LS - Reduce Computation</strong>
+    <ul>
+      <li>[Talk about Stochastic Variational Inference]</li>
+      <li>This is used to reduce the computation of ELBO from over whole dataset to just a minibatch.</li>
+      <li>[Explain about how this provides an “unbiased” estimate of ELBO over whole dataset?]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Gradient Ascent</strong>
+    <ul>
+      <li>[Talk about Gradient based optimization of ELBO]
+        <ul>
+          <li>Now, use gradient based optimization algorithm to optimise the ELBO wrt both - distribution parameters and variational parameter.</li>
+        </ul>
+      </li>
+      <li>[Gradient wrt to model or distribution parameters (theta)]
+        <ul>
+          <li>This can be calculated easily.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Reparameterization Trick</strong>
+    <ul>
+      <li>[Gradient wrt variational parameters (psi or phi)]
+        <ul>
+          <li>This is difficult.</li>
+        </ul>
+      </li>
+      <li>For this, various gradient estimators are proposed like reparameterization trick (ref VAE paper)
+        <ul>
+          <li>[About Reparameterization Trick]</li>
+          <li>This trick depends on “Transformations of random variables”. More specifically, it depends on “linear” transformation of standard Gaussian variable.</li>
+          <li>Formula for calculating the density of transformed variable is also used but apparently it is used in “reverse”.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p>[more steps will come here until the implementation of VAE]</p>
+
+<hr />
+
+<ul>
+  <li><strong>Take Away</strong>
+    <ul>
+      <li>Mastered various algorithms
+        <ul>
+          <li>BMM</li>
+          <li>GMM</li>
+          <li>FA</li>
+          <li>MFA</li>
+          <li>VAE</li>
+        </ul>
+      </li>
+      <li>Any model of some \(T\) which is build by only using unlabeled data and assumes some hidden representation is famously called “Latent Variable Model” or in short “LVM”.</li>
+      <li>So, model with multinoulli distribution, BMM, GMM, MFA, VAE etc. are some examples of LVM we mastered from this ramp.</li>
+      <li>It is called such that because “latent variables” are assumed and used to build a model.
+        <ul>
+          <li>E.g. in BMM, digit class is latent variable.</li>
+          <li>[explain more about latent variables]</li>
+        </ul>
+      </li>
+      <li>[insert this idea some where in ramp]
+        <ul>
+          <li>This idea is about “latent” variables. It says that we won’t know these latent variables.</li>
+          <li>In digit gen problem, by manual analysis we were able to understand what are high-level representations and what they represent. But in more real and more complex dataset, understanding these high-level representation and building model which explicitly respects it wont be easy.</li>
+          <li>Therefore, we need some general way to represent global structure which works for all complex datasets.</li>
+        </ul>
+      </li>
+      <li>Just like in previous ramp, machine is able to learn to imagine. It means here, we are again doing “machine learning” or we can say our algorithm is “machine learning algorithm”.
+        <ul>
+          <li>In this ramp, we tried to come up with the model of \(T\) manually but turns out it is laborious. So, we then thought of letting the computer to find or “learn” the model by itself.</li>
+          <li>This is very similar to first ramp, where we were first trying to hard code the rules for image classification but later on, we let the computer to learn them by itself.</li>
+        </ul>
+      </li>
+      <li>Till now, we have seen various ML algorithms.</li>
+      <li>If we look at the differences between these algorithms, we will find several differences.</li>
+      <li>Differences on the basis of dataset - labeled or unlabeled.
+        <ul>
+          <li>ML algorithms which uses labeled dataset are called supervised learning algorithms.
+            <ul>
+              <li>So, image classification algorithm is a supervised learning algorithm.</li>
+            </ul>
+          </li>
+          <li>And the ones which uses unlabeled dataset are called unsupervised learning algorithms.
+            <ul>
+              <li>So, algorithms like AR model, BMM, GMM, MFA, VAE etc. which we used for generation problem are unsupervised learning algorithms.</li>
+            </ul>
+          </li>
+          <li>These unsupervised learning algorithms can be differentiated further on the basis of type of model. One indirectly finds the probability distribution by using NN, while other (like BMM) directly finds the probability distribution.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+    
+     <!-- add a logic to only show if there is citation in a post -->
+    <div id='bibliography'>
+        <div class='wrap'> 
+             <!-- <p>References:</p> -->
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+
+</div>
+  </body>
+</html>

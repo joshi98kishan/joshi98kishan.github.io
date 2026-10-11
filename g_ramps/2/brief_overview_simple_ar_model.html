@@ -1,0 +1,642 @@
+<!doctype html>
+<html> <!-- use lang attr in html tag -->
+
+  <head>
+    <title>Brief Overview of G-Ramp - Simple AR Model</title>
+    <meta charset="utf-8" />
+    <meta name='author' content='Kishan Joshi' />
+    <meta
+        name="description"
+        content="I write blogs on maths and AI." />
+    
+    <link rel='shortcut icon' href='/assets/images/favicon-16x16.png' />
+    
+    <!-- for responsive webpage -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/trac.css" />
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Brief Overview of G-Ramp - Simple AR Model</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Brief Overview of G-Ramp - Simple AR Model" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument." />
+<meta property="og:description" content="Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument." />
+<link rel="canonical" href="http://localhost:4000/g_ramps/2/brief_overview_simple_ar_model.html" />
+<meta property="og:url" content="http://localhost:4000/g_ramps/2/brief_overview_simple_ar_model.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-10-10T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Brief Overview of G-Ramp - Simple AR Model" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-10-10T00:00:00+05:30","datePublished":"2026-10-10T00:00:00+05:30","description":"Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument.","headline":"Brief Overview of G-Ramp - Simple AR Model","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/g_ramps/2/brief_overview_simple_ar_model.html"},"url":"http://localhost:4000/g_ramps/2/brief_overview_simple_ar_model.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- {# % include mathjax.html %} -->
+  </head>
+
+
+
+  <body>
+    <!-- <nav>
+    <a href = "/"> Blog </a>
+    <a href = "/about"> About </a>
+</nav> -->
+
+<div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'>Blog</a></li>
+        <li><a href='/g_ramps'>G-Ramps</a></li>
+        <li><a href='/drafts'>Drafts</a></li>
+        <li><a href='/about'>About</a></li>
+    </ul>
+</div>    
+    <div class='content'>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>Brief Overview of G-Ramp - Simple AR Model</h1>
+            <!-- <h4></h4>-->
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Last Updated</h3>
+                    <p>10 October 2026</p>
+                </div>
+            </div> 
+
+            <!-- Below div is not required. -->
+            <!-- <div class='clear'></div> -->
+        </div>
+    </div>
+    <div class='wrap article'>
+        <p><em>Note:- Since G-Ramps platform is under development, you will find missing steps or missing parts of already mentioned steps. That is, you will find some arguments which are either not proved mathematically or not supported by experimentation. With time, there should be a lesser and lesser number of such arguments. If there are such arguments, then I should at least fix them temporarily by providing a good reference for each such argument.</em></p>
+
+<p><em>Between any two adjacent steps, either it will be explicitly mention that there are missing steps between these two steps. Or there may not be such mention of missing steps. Similarly, there may or may not be explicit mention of missing parts of any already mentioned steps.</em>
+<em>Text in square brackets ‘[]’ is used to mention about missing steps or about missing parts of already mentioned steps.</em></p>
+
+<p><em>A step title below starts with “LS” meaning logical step. Steps should be numbered like “LS#1 …”. But putting numbers during development creates difficult because it is not straightforward how to increment the numbers when steps are added in between. So, until a g-ramp is complete and contain all the steps, steps are not numbered.</em></p>
+
+<h3 id="brief-overview">Brief Overview</h3>
+
+<ul>
+  <li><strong>Prerequisite</strong>
+    <ul>
+      <li>It is assumed that you have gone through the first ramp.</li>
+      <li>If not, you should atleast know that neural networks (NNs) are universal function approximators and how they are trained.</li>
+    </ul>
+  </li>
+  <li><strong>Main Problem</strong>
+    <ul>
+      <li>Humans have imagination power. We can imagine literally anything, be it some known or novel concept or physical object. Let’s denote whatever concept or physical object we can imagine as \(x\) for simplicity.</li>
+      <li>Novel \(x\) is some \(x\) which is atleast according to you does not exist yet in the world but also it may not really exist for anyone. We create useful stuff with the help of our imagination power.</li>
+      <li>We can do two kind of imaginations - “wild” and “problem-driven”. We use problem-driven imagination when we want to solve a problem. Given a problem, we <em>only</em> think and imagine those \(x\) which can atleast solve a problem to some extent instead of not solving it at all. Let’s call such viable but not necessarily perfect \(x\) “candidate”. So, problem-driven imagination can be defined as an imagination where space of imagination is constrained to only candidates of a given problem. We do not think of those \(x\) which are not candidate.</li>
+      <li>E.g. a problem is that you want to buy a shirt and you are not sure what kind of shirt you are looking for. But ofcourse you have some preferences. Like you do not want to repeat the shirts you have in your wardrobe. And atleast you also have size or fitting preferences. Let’s say you have just these preferences. What you will do? You will go to online or offline stores. But before going there you will think and imagine many shirts on you one after another which follow these preferences. Here any shirt which follow the preferences is a candidate but a car is not a candidate or any other shirt which does not follow the preferences is not a candidate. This explains what we mean by “candidate”. So, the space of imagination contain only shirts and all kinds of shirts which follow preferences. By imagining, you are trying to find what next shirt you should buy.</li>
+      <li>On the other hand, one does “wild” imagination when someone does not want to solve a problem but still imagines. Then in this case there is no constrain in the space of imagination. It is borderless. One can imagine literally any \(x\).</li>
+      <li>Wild imagination is not dependent on one particular problem. It is unhinged. The space of imagination has no boundaries. So we are free to imagine anything. And since space of imagination is just infinite, there are high chances that whatever we are imagining may not lead to solving one of many real problems out there. Example of such imagination is dreaming, be it night or day dreaming.</li>
+      <li>Relative to wild imagination, problem-driven imagination is very clearly useful because there is a problem which we are focused on solving. And there is space of imagination which is constrained or fixed. Since, we are focused on solving and space is fixed, we can easily imagine a candidate which will atleast help us solve a problem instead of not helping at all. For easier problems, problem-driven imagination can actually solve the problem. E.g. designers of all sorts be it physical product designers, architects, web designers etc. use imagination power to solve a problem.</li>
+      <li>On the other hand, scientists deals with problems which are extremely difficult. For such problems, problem driven imagination is very difficult to do it effectively and hence one do not form a complete solution via imagination. But atleast imagination help them to propose a theory and hypothesis which they can test whether it is solving a problem or not. Einstein once imagined riding on a beam of light to better understand light.</li>
+      <li>But [As far as I know. May edit this para later if required] there are many problems like drug discovery, material discovery, biological discovery etc. where problem-driven imagination is only barely more useful than wild imagination. Because such problems have exponentially large space of imagination. Take an example of drug discovery problem. Given some disease, there are exponential number of candidates. And one cannot sweep all the candidates and think of a novel molecule which is better than existing molecules. It is impossible for a human to do that because of limited time or capacity. This is just an example. Many real-world problems like mentioned above which requires imagination are very difficult to solve because space of imagination is exponential.</li>
+      <li>As mentioned, wild imagination is not clearly useful because of infinite space of imagination. But atleast problem-driven imagination has not infinite space. So let’s first focus on problem-driven imagination and let’s see if we can do problem-driven imagination when it is hard to do. Then later on, we can talk about improving wild imagination too in some other g-ramp.</li>
+      <li>What if we can let computer do problem-driven imagination and create novel things which are useful. Why computer? Because of its speed, accuracy, and scalability (in term of space of imagination).</li>
+      <li>When we let computer imagine, the algorithm which does it is called “Generative AI” algorithm or “gen AI” algorithm in short. And “generate” term is used when a computer imagine something.</li>
+      <li>
+        <p>We can let gen AI algorithm generate \(x\) like molecules etc. in terms of data structures like images, graph, tree etc.</p>
+      </li>
+      <li>Now, we have come to our “main problem” of this g-ramp. <strong>“Main problem” which this g-ramp is for, is that we want a computer to do “problem-driven imagination”</strong>.</li>
+      <li>We can make the “main problem” more concrete so that it is easy for us to think of solution. But our solution should be for the “main problem” and not just for its concrete version.</li>
+      <li>To make it concrete, we can think of some particular problem for which we want a computer to do problem-driven imagination. For simplicity, let’s choose a problem where we want a computer to imagine or generate digits in different handwriting.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Two Functions of Intelligence</strong>
+    <ul>
+      <li>Since we want to let computer do imagination, first obvious step should be that we should first understand how humans learn to do imagination?</li>
+      <li>[Explain that we mentioned in previous ramp that intelligence meaning having two functions - learning and action. And imagination is one kind of action function of human intelligence. And there should be a learning function which outputs an action function for imagination]</li>
+      <li>We also mentioned that, to simulate these two functions in a computer we need to implement them via mathematics.</li>
+      <li>Let’s first try to understand these two functions with respect to the human action - imagination or more specifically problem-driven imagination because that is what our “main problem” demands. That is, how a human learn to do problem-driven imagination and how they do this imagination, once they have learned to do it.</li>
+      <li>And then we can think of formulating them in mathematics.</li>
+    </ul>
+  </li>
+  <li><strong>LS - How a human learn to imagine?</strong>
+    <ul>
+      <li>[Explain that we do not learn it consciously. It is inherent and already there naturally.]</li>
+      <li>But one thing, we can say that imagination becomes mature or more controlled with time, as we gain more knowledge of the world.</li>
+      <li>Why? Because we understand more and more regularity in the world. We understand that there are representations or description of the world at different level. We will be using the term “representation” to mean description, just like in previous ramp.
+        <ul>
+          <li>[mention that we have explained representation in previous ramp]</li>
+        </ul>
+      </li>
+      <li>And as we see the world around, representation at every level changes at different rate. As we move from highest level to lowest level, the rate of change of representation increases from 0 to highest.</li>
+      <li>As toddlers grow, they understand more and more things. With time, they understand basic physics, shape, texture, color, material, position, posture, pose, light etc.</li>
+      <li>[Explain that we can represent or describe at any level literally anything in the world. We represent whatever we focus on. We can describe a scene containing multiple objects or just single object]
+        <ul>
+          <li>[give examples explaining this]</li>
+          <li>Scene here is nothing but whatever we focus on.</li>
+        </ul>
+      </li>
+      <li>
+        <p>[explain that more higher-level the representation is of, more number of different scenes can be described by single representation]</p>
+      </li>
+      <li>E.g. we are focusing on a shirt. So, scene is nothing but that shirt. We describe that shirt. Lowest level of representation describes it in most detail which includes everything what we are seeing including the exact posture, background description etc.</li>
+      <li>A little higher representation will exclude the posture and background description. Such representation just describes that shirt. It is independent of its posture and background. Such representation let’s imagine that shirt in different scenes which we haven’t seen before, i.e., in different postures and background.</li>
+      <li>
+        <p>As we see more and more shirts, we notice that they come in different color, material, pattern, collar, fitting, sleeves etc. And we notice that all these descriptions of a shirt does not define shirt. And we figure out a description or representation which describes <em>all</em> the shirts in any posture, background, color, material, pattern etc. This is the <em>highest</em> level of representation if we <em>only</em> want to describe a single object, here shirt, of the world.</p>
+      </li>
+      <li>[talk about how this explains problem-driven imagination?]
+        <ul>
+          <li>[Give the example of shirt problem. We have worn and seen a lot of shirts.]</li>
+        </ul>
+      </li>
+      <li>
+        <p>Another example for understanding different levels of representation is imagining a particular cup on a table. After you observe this cup at different positions and in different orientation on a table, you will know that highest level of representation only describing cup and table is that “there is this cup on a table”. And lower level representations describes cup’s different orientations and different position on the table.</p>
+      </li>
+      <li>
+        <p>[now, explain different levels of representation for a drug design problem and how understanding this will help us generating all possible drugs]</p>
+      </li>
+      <li>[conclude that learning to imagine means understanding different levels of representations]</li>
+      <li>[conclude that for problem-driven imagination, one learns a high-level representation, let’s call it “problem-level representation”, which describes all the candidates. Also explain that this representation is just high-enough that it only describes all candidates and nothing else apart from this.]
+        <ul>
+          <li>Different problems will have different problem-level representation.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - How a human imagine?</strong>
+    <ul>
+      <li>When we try to solve a problem via problem-driven imagination, we do not just imagine one candidate. But we imagine multiple candidates that we think could solve the problem because we do not really know what is the best solution. We may think, there could be even better candidate which we have not imagined yet and this is the reason we keep imagining.</li>
+      <li>[given a problem, explain that to imagine a candidate, one need to create lower levels of representation until the lowest level representation by “adding” some more description on top of problem-level representation]
+        <ul>
+          <li>Let’s call lowest level representation as “candidate-level representation”.</li>
+          <li>[Explain that candidate-level representation describes a particular candidate]</li>
+        </ul>
+      </li>
+      <li>[and explain that the description is chosen first randomly and then added to problem-level representation]
+        <ul>
+          <li>[give examples]</li>
+          <li>In shirt example, we can choose color, pattern, fitting randomly out of many options.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Given a problem, action function of imagination just brings to your mind the candidate \(x\) one by one. And there is no fixed order. Whenever you try to solve same problem by problem-driven imagination you will imagine its candidates in different order every time. As if, a candidate to imagine is chosen randomly. And when you keep imagining, you are keep picking next candidate randomly from space of imagination.</p>
+      </li>
+      <li>
+        <p>After imagining many candidates, you know which candidates are potentially better than other candidates. But only after rigourously testing these potential candidates, we select the candidate or candidates which solve the problem in a better manner. Testing the candidates would involve manifesting them in some form so that one can consciously think about them.</p>
+      </li>
+      <li>[give examples]</li>
+      <li>Let’s continue our shirt example from “Main Problem” section. We would like to imagine many shirts. We know space of imagination is large. And we know there is possibility that we can imagine a shirt which is better than the already imagined shirts. When we try to imagine a shirt, it seems like we just randomly choose a candidate to imagine out of all candidates. Same process happens whenever we try to change our current imagination and try to imagine another shirt.
+        <ul>
+          <li>After imaginging many shirts one after another, you have in mind some shirts which are potentally better than other shirts. So now you would like to test these shirts properly by finding these shirts or similar shirts in online or offline stores. And try them on. And then only you can finally decide whether to buy which shirts out of these potential shirts.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Another example is web designing. You imagined some web designs. But to decide finally whether which design is good, you create a mockup and test it.</p>
+      </li>
+      <li>[now explain that similar process happens in drug design. Drug testing would involve manifesting them first, which is very expensive but also accurate. So, one need to first search potential drugs with the help of some cheap proxy which tells in some way that a molecule could be a potential drug. A proxy should be such that it should be able to filter out safely those molecules which can’t be a drug for a given disease. By cheap screening first, we do not do expensive test on those molecules which can’t be a drug for a given disease. We only rigourously test molecules which has potential to be a drug.]
+        <ul>
+          <li>[explain that this very much sound like a problem which can be solved via problem-driven imagination but it is just that humans can’t do that as explained in “main problem” section. So, we decided to let computer do problem-driven imagination.]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Mathematical Formulation of Functions</strong>
+    <ul>
+      <li>We have understood two functions - action and learning with respect to human action - problem-driven imagination.</li>
+      <li>Now we should try to formulate them in mathematics.</li>
+      <li>[As explained in previous ramp, to mathematically formulate the two functions of intelligence, we have to first formulate action function and then we can formulate learning function accordingly.]</li>
+      <li>When we think of action function described in previous step, it immediately reminds us a problem of picking a card from shuffled deck. One can pick any card out of \(52\). Each card have \(1/52\) probability of getting picked.</li>
+      <li>
+        <p>Similarly, one can imagine any candidate from space of imagination. It means, each next candidate have \(1/\vert S \vert\) probability of getting picked for imagination, where \(\vert S \vert\) is size of space of imagination.</p>
+      </li>
+      <li>Let’s represent probability over \(x\) as \(p(x)\). In problem-driven imagination, \(x\) is a candidate. While in wild imagination, \(x\) is just \(x\), i.e., there is no constrain.</li>
+      <li>[define “random variable”]</li>
+      <li>So mathematically, we can say, action function is nothing but sampling from this probability distribution.
+        <ul>
+          <li>[define what we mean by “probability distribution” and “sampling” for a refresher. This is covered in school-level maths.]</li>
+        </ul>
+      </li>
+      <li>
+        <p>For a given problem, a computer does not know the probability distribution over candidates because it does not know all the candidates. Let’s call this unknown target probability distribution as \(T\).</p>
+      </li>
+      <li>When we try to approximate \(T\) in a computer or in mathematical form, that mathematical form is called “model” (similarly explained in first ramp).
+        <ul>
+          <li>[And may be we can explain more about what do we mean by word “model”]</li>
+          <li>We can denote model by \(M\).</li>
+        </ul>
+      </li>
+      <li>If we have a model of \(T\), then we can let a computer sample from \(M\) because we know this distirbution unlike \(T\). And this is how we can implement action function.
+        <ul>
+          <li>[explain how to sample from given probability distribution?]</li>
+        </ul>
+      </li>
+      <li>[also mention and explain the term “data generating process”]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Mathematical Formulation of Learning Function</strong>
+    <ul>
+      <li>We know action function is nothing but sampling from \(M\).</li>
+      <li>So, we need \(M\) to implement action function in a computer.</li>
+      <li>It means learning function or algorithm should output \(M\).</li>
+      <li>The process of creating a model of \(T\) is called modeling, but more popularly called either learning or training.</li>
+      <li>Given any problem e.g. handwritten digit image generation, how do we create its learning algorithm.
+        <ul>
+          <li>Given a problem, how do we model \(T\)?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Need Dataset</strong>
+    <ul>
+      <li>Next and only obvious step is to try to mimic how human learn to imagine, because that is what inspired the “main problem”.</li>
+      <li>We explained how human learn above:
+        <ul>
+          <li>They see many candidates.</li>
+          <li>And learn all levels of representations.</li>
+        </ul>
+      </li>
+      <li>
+        <p>So, given some problem, we need a computer to see enough candidates so that somehow it can learn all levels of representations.</p>
+      </li>
+      <li>Collection of examples or candidates given to a computer to learn is called a “dataset” or simply “data”.
+        <ul>
+          <li>[mention that this is generally called “training dataset” or “training data”]</li>
+        </ul>
+      </li>
+      <li>
+        <p>So, learning algorithm will be taking the dataset as input. And the algorithm should somehow let a computer learn all levels of representations from a given dataset and somehow model the \(T\).</p>
+      </li>
+      <li>For the handwritten digit generation problem, what dataset we should have?
+        <ul>
+          <li>[explain first that candidate should be in a form of “image” for this problem]
+            <ul>
+              <li>\(x\) needs to be represented in a computer so that a computer can generate it.</li>
+              <li>[about image: an image is 3 square matrices corresponding to three color channels]</li>
+            </ul>
+          </li>
+          <li>We have to have a dataset which contain only digit images, i.e., images of only 0 to 9.</li>
+          <li>[explain that we need multiple images of each digit but with different handwriting. So, there could be variation due to different hand-writing.]</li>
+          <li>[explain MNIST dataset]</li>
+        </ul>
+      </li>
+      <li>For drug design problem, we can let a computer to see a lot of molecules.
+        <ul>
+          <li>How can we store molecules in a computer?</li>
+          <li>[explain that a molecule can be represented (lowest-level representation) as a graph and stored in a computer. And a graph can be stored in a computer in many ways like adjacency list, adjacency matrix etc.]</li>
+          <li>For this problem, we can see the advantage of letting a computer do problem-driven imagination over a human doing it.</li>
+          <li>As we mentioned that for this problem, space of imagination is exponentially large. But computer can ingest a lot of data, process it quickly (compared to humans) and based on this data, it can hopefully imagine novel and more useful molecule in comparatively much less time.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Naive Model</strong>
+    <ul>
+      <li>We have defined the output and input of a learning algorithm.</li>
+      <li>[explain that before going on understanding all levels of representations through dataset, we can think of a very naive model]</li>
+      <li>[explain how? We need a model of \(T\). We have observations in terms of dataset. We know from school that prob = obs/total]</li>
+      <li>Such way of modeling leads to spiky distribution because such way requires all candidates, i.e. whole space of imagination and we don’t have that.</li>
+      <li>If we have all possible candidates then why would we need to generate in the first place.</li>
+      <li>Or we can say this way of modeling the \(T\) is not a good approximation of \(T\).</li>
+    </ul>
+  </li>
+  <li><strong>LS - Analyze MNIST Dataset</strong>
+    <ul>
+      <li>We have a dataset. Now we need to mimic how humans learn all levels of representation by seeing many candidates.</li>
+      <li>This will let’s create a good model of \(T\).
+        <ul>
+          <li>[explain how?]</li>
+          <li>A good model should be able to generate all the candidates which are possible apart from what is available in the dataset.</li>
+          <li>[ Use the term “generalize”]</li>
+        </ul>
+      </li>
+      <li>In the “main problem” section, we defined the “novelty” for humans. Now let’s define “novelty” for computer.</li>
+      <li>
+        <p>Any \(x\) or candidate is “novel” for a computer if the computer has not seen it during learning.</p>
+      </li>
+      <li>In order to mimic, let’s recall what we do when we see a lot of examples.
+        <ul>
+          <li>We just need to recall “what” we learned to do such imagination.</li>
+          <li>[explain that “how” to learn is not important]</li>
+        </ul>
+      </li>
+      <li>Given a problem, we understand different levels of representations.</li>
+      <li>Since, representations are different for different problem.</li>
+      <li>Let’s understand what problem-level and all lower level representations until candidate-level representation, we will learn to do imagination for handwritten digit generation problem.
+        <ul>
+          <li>[explain that we will be looking at candidates in a form which a computer will process, i.e. in the form of images. Conclude that we will be analyzing MNIST dataset by ourselves]</li>
+        </ul>
+      </li>
+      <li>After looking at MNIST dataset, problem-level representation we will learn is that image contains a handwritten digit in a center in white color with black background.
+        <ul>
+          <li>With digits having more or less same size.</li>
+          <li>All images in the \(T\) should follow this description.</li>
+        </ul>
+      </li>
+      <li>Problem-level representation does not specify digit.</li>
+      <li>To create candidate-level representation, we add description to problem-level representation. Every single addition of description create next lower level representation. This addition continues until we get lowest level of representation which we are also calling candidate-level representation.
+        <ul>
+          <li>[Talk about order in which description is added. E.g. local randomness is added on top of global structure. Because it depends on global structure.]</li>
+        </ul>
+      </li>
+      <li>Second level describes which particular digit out of 10 digits does an image contain and global structure of each digit, which is same for all images in a digit class.
+        <ul>
+          <li>[Can we say that class label of each image can act as second-level representation?]</li>
+          <li>We can select any second-level representation out of total 10. E.g. let’s select “7”.</li>
+        </ul>
+      </li>
+      <li>Second-level representation is nothing but a description of a “wave” with a particular global structure (talked about it in previous ramp). So, it does not describe that particular pixel should have such and such value. But is only about the particular set of differences in values which could occur over any set of pixels in an image.
+        <ul>
+          <li>Any two waves of same class will have same global structure and only varying locally.</li>
+          <li>Any two waves of different class will also have different global structure along with different local structure.</li>
+        </ul>
+      </li>
+      <li>[and also explain that since it is only about the differences, it leads to any color image]
+        <ul>
+          <li>But since our problem-level representation describes a white color.</li>
+          <li>[it means only a particular kind (corresponding to white color and black background) of difference out of many possible differences is allowed]</li>
+        </ul>
+      </li>
+      <li>This representation contain information about all possible handwriting.</li>
+      <li>Also since the wave could occur anywhere, but problem-level representation describes that digit only occurs at the center and are of similar sizes.</li>
+      <li>
+        <p>It means wave could only occur in a center and can not vary much in size.</p>
+      </li>
+      <li>
+        <p>Now we have a wave with a particular global structure that is only occurring in center and in white.</p>
+      </li>
+      <li>This let us imagine all the possible handwritten seven digit in white in center.
+        <ul>
+          <li>[how? Explain via movement of wave]</li>
+          <li>Or we can say this is last-second representation and describes all possible lowest-level or last-level representation.</li>
+          <li>Last-level representation is nothing but pixel values of a particular image.</li>
+          <li>[explain that we get last-level representation when we take snapshot of a moving wave. Snapshot could be explained as pausing the wave]</li>
+          <li>[lowest-level representation varies the most from one image to another]</li>
+          <li>
+            <hr />
+          </li>
+          <li>Novelty will come from randomness in handwriting on top of this regularity.</li>
+          <li>This will lead to novel handwriting of one of a digit and hence novel object.</li>
+          <li>
+            <p>These novel objects have actually non-zero probability and hence part of the \(T\) we are trying to model.</p>
+          </li>
+          <li>it is the lowest level of representation, i.e., no two images in a dataset have same such representation unless they are identical.</li>
+          <li>it means it varies from one image to other. And this variation leads to all possible objects with non-zero probability in \(T\).</li>
+        </ul>
+      </li>
+      <li>Let’s divide the area into central and non-central area. Wave can start from any pixel lying near the boundary of central area.</li>
+      <li>If we focus on one particular pixel near the boundary of central area and if we imagine different 7 digit candidates. Then we will see that sometimes this pixel is bright and sometime it is dark, depending on wave which is moving randomly.</li>
+      <li>That means, when we take snapshot without looking at wave, this pixel could be bright or dark. This again looks like we are sampling from some probability distribution over two outcomes bright and dark.
+        <ul>
+          <li>[also explain that this is not binary distribution but categorical distribution over pixel values. Bright pixel means having higher pixel value like between 200 to 255. And dark pixel means having lower pixel value like between 0 to 50.]</li>
+        </ul>
+      </li>
+      <li>It means at each pixel near boundary of central area, there is some probability that a wave could start.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Joint And Conditional Probability</strong>
+    <ul>
+      <li>We can also notice that once the wave starts at some pixel, there are high chances that a pixel adjacent to this pixel is also bright. Because bright pixels occur together.
+        <ul>
+          <li>[explain what do we mean by “adjacent” here. We have to explain order in which we are iterating over pixels, like from left to right and top to bottom. If we have this order than adjacent means a pixel on the right side or bottom or diagonally bottom and right side]</li>
+          <li>This is at least true for diagonally adjacent pixel.</li>
+        </ul>
+      </li>
+      <li>If we do not fix the starting of a wave at some pixel then probability that adjacent pixel is bright is low. But if we fix, then probability of adjacent pixel being bright is very high.</li>
+      <li>
+        <p>This immediately reminds us of conditional probability. And independent and dependent events. We have studied about these in school.</p>
+
+        <ul>
+          <li>[Explain this. When probability of an event changes when we know some other event has occurred then these two events are dependent. Otherwise independent.]</li>
+          <li>[also mention the idea of dependency or independency of two random variables]</li>
+          <li>A pixel value is a kind of random variable.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Here a pixel near a border of central area and its adjacent pixel are dependent.</p>
+      </li>
+      <li>Now if we continue, we can say same thing about the third pixel in the iteration.
+        <ul>
+          <li>Numbering the pixels starting from start of the wave. And iterating in the order defined above.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Third pixel also has high chances of being bright if we know previous two pixels are bright.</p>
+      </li>
+      <li>[now calculate these probabilities for 7 digit]</li>
+      <li>[show that this let you generate different handwritten 7 digits]</li>
+      <li>[explain that similar dependency of pixels is true for rest of the digits]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Back To Naive Model</strong>
+    <ul>
+      <li>[explain that to generate other digits too, we can calculate probabilities over pixels by considering all the digits]
+        <ul>
+          <li>We will see there is some probability distribution over first pixel values. And every next pixel has a different probability distribution over its values depending on values of previous pixels, i.e., which digit wave has started if started.</li>
+        </ul>
+      </li>
+      <li>[now explain that this leads to naive model]
+        <ul>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>This whole analysis realizes you that probability of \(x\) can be thought as probability of multiple events occurring together (“joint probability”) like $$p(x) = p(ab) = p(a).p(b</td>
+                  <td>a)$$</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>You can break probability of \(x\) into multiplication of probability of its constituents, here pixels.</li>
+        </ul>
+      </li>
+      <li>[as we notice probability distributions of more pixels. We will notice that conditional probability of pixels away from the border, conditioned on pixel values coming from a particular digit, is approximately independent of these previous pixel values when we know that digit.]
+        <ul>
+          <li>[now explain “conditional independence”]</li>
+          <li>Because global structure approximately determine the probability distributions of pixels.</li>
+          <li>Dependency is only there because we do not know the class up front and condition determine the class as it becomes bigger by sequential sampling. Once the condition becomes big enough and class is determined then one can just use probabilities conditioned on that class because in digit dataset, class determines the global structure.</li>
+        </ul>
+      </li>
+      <li>[explain that this is a one trail of steps which we can take to improve upon naive model. But it will be very different from our current naive model. We will take this trail in next ramp. Can we now think of a small tweak in naive model so that we can improve upon it without changing it much.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Add Some Error</strong>
+    <ul>
+      <li>To improve upon naive model, we should first understand what it is doing.</li>
+      <li>It constructs one of an image in a dataset exactly pixel by pixel.</li>
+      <li>As we understood above that we should only be caring about second-level representations.</li>
+      <li>As long as, we have this representation being followed, we are solving the “main problem” which is letting a computer do problem-driven imagination, where problem here is handwritten digit generation.</li>
+      <li>It means, we have to focus on moving a wave randomly which is fixed in center, and is in white color.
+        <ul>
+          <li>[explain that fixing a color does not mean, using some particular set of values for pixels. But it means that with naked eyes this color should like white but can have very subtle differences from one image to another, i.e. +5, -5 in values.]</li>
+        </ul>
+      </li>
+      <li>
+        <p>This tells us that what we can at least do to create novel candidates which may not be too novel but very subtly novel is to have non-zero probabilities for those pixel values which are close to modes of current distributions.</p>
+      </li>
+      <li>It means, we are adding some error and hence making the distribution to not “overfit” the data.
+        <ul>
+          <li>[we will be explaining “overfit” term in first ramp]</li>
+        </ul>
+      </li>
+      <li>Or we can say we are making the modes of conditional distribution less spiky by adding some error.</li>
+      <li>[explain that these less spiky distributions lets you sample novel candidates. And also what kind of novel candidates.]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Use Neural Network</strong>
+    <ul>
+      <li>How do we do this?</li>
+      <li>We can manually do this but it seems laborious.</li>
+      <li>[explain that even if we manually do this, we will have conditions which we haven’t seen in dataset therefore we don’t have corresponding conditional probability distributions]</li>
+      <li>We need probability distributions corresponding to these conditions.</li>
+      <li>And we can very easily think of these distributions. It is just that we can not calculate them via a computer.</li>
+      <li>What we currently need is that we want to map unseen conditions (which are not present in a dataset) to appropriate less spiky distributions.
+        <ul>
+          <li>“Appropriate” here means output probability distribution should be such that the overall novel object should follow the second-level representation.</li>
+        </ul>
+      </li>
+      <li>
+        <p>It means we need a function which can do such mapping.</p>
+      </li>
+      <li>This looks like a same problem we dealt in first ramp where we needed to find a function that would map an image, be it seen or unseen, to its correct label.</li>
+      <li>
+        <p>And we learned that “neural networks” are universal function approximators and they can be trained to approximate any arbitrary function given the appropriate dataset.</p>
+      </li>
+      <li>
+        <p>So here, we are again doing “machine learning”, but this time we are letting the machine to learn to imagine.</p>
+      </li>
+      <li>— function should output prob dist similar to dataset given a condition from the dataset.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Softmax Function</strong>
+    <ul>
+      <li>We decided that we are using NN but how?</li>
+      <li>We need the NN to output probability distribution.</li>
+      <li>[now introduce “softmax” layer and come to conclusion that we can use it]</li>
+    </ul>
+  </li>
+  <li><strong>LS - Training Data</strong>
+    <ul>
+      <li>How to train this neural network?</li>
+      <li>[Call this neural network as “internal” model. Explain that there is another “modeling” problem inside a larger modeling problem of modeling \(T\). And explain that this internal model indirectly models \(T\).]</li>
+      <li>This internal model models the mapping between condition and conditional probability distribution explained above.</li>
+      <li>To let computer learn this neural network, we have to have a dataset just like in previous ramp.</li>
+      <li>
+        <p>[explain the creation of training data for internal model]</p>
+      </li>
+      <li>This internal model is <strong>simple “Auto Regressive (AR)” model</strong>.
+        <ul>
+          <li>[explain more about this term in detail]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - Cost Function</strong>
+    <ul>
+      <li>Now we need cost function.</li>
+      <li>[explain that this cost function will come from comparing two probability distribution]</li>
+      <li>[derive “KL divergence”]
+        <ul>
+          <li>ref: https://gregorygundersen.com/blog/2019/01/22/kld/</li>
+        </ul>
+      </li>
+      <li>
+        <p>[explain that KL divergence is differentiable and hence can be used as a cost function.]</p>
+      </li>
+      <li>[From this cost function derive log likelihood and talk about “MLE”]
+        <ul>
+          <li>About likelihood</li>
+          <li>About log likelihood</li>
+          <li>About Maximum Likelihood Estimate (MLE)</li>
+          <li>[Explain all these terms. Explaining why these terms are called this way, will explain the “statistical derivation” of this cost function, which we should be talking about in other ramp like in some bayesian based algorithm ramp].</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>LS - SGD</strong>
+    <ul>
+      <li>[try optimizing via SGD]</li>
+      <li>[turns out, it will be very slow optimization process]</li>
+      <li>Since it is slow, we will keep stopping the training and check our model.</li>
+      <li>We will find that our model is very correctly outputting the probability distributions regarding the black area around a digit. Why? [explain that - because all candidates agree with it].
+        <ul>
+          <li>[explain that “surrounding” distributions will converge way faster than “central” distributions. Here “surrounding” means black area surrounding a digit and “central” already defined above]</li>
+        </ul>
+      </li>
+      <li>[Now explain that probability distributions near central area are very different for every unique conditions. Even if they are very subtly difference for us but for model they are totally different. Because of categorical distribution and not something like Gaussian distribution]</li>
+      <li>This gives us an idea that this itself lead us to less spiky distribution and we do not have to make it less spiky ourselves by adding appropriate errors manually.</li>
+      <li>
+        <p>It means we have to stop training before convergence. And we have to train it enough such that surrounding distributions are converged and central distributions are close to convergence but not converged.</p>
+      </li>
+      <li>[also mention that full convergence means overfitting to given dataset and it would just become a naive model because NNs are too flexible]</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p>[Steps about making SGD convergence faster. And fixing manual tuning of learning rate. Which includes steps about momentum, nesterov etc. to Adam]</p>
+
+<hr />
+
+<ul>
+  <li><strong>LS - Adam</strong>
+    <ul>
+      <li>[derive Adam here]</li>
+      <li>Adam optimizer train the model faster than SGD.</li>
+    </ul>
+  </li>
+  <li><strong>LS - Evaluation</strong>
+    <ul>
+      <li>[mention about quantitative and qualitative evaluation]</li>
+      <li>[show that AR model indeed generates some novel candidates, but also generates “non-candidate” \(x\)]</li>
+    </ul>
+  </li>
+</ul>
+
+<p><em>Note:- To be honest, I haven’t read much about autoregressive model. I have put autoregressive model in this ramp because it is very intuitive to understand and also very easy to implement. Therefore, it works as a good but non-trivial (because NN is involved) baseline to compare with VAE.</em>
+<em>Being intuitive does not mean that I should be able to logically derive it easily. Not sure if I how derived autoregressive model in the best way possible. I have to go through its resources to get better inspiration. I will update this ramp when I feel that there is a better way to derive it.</em></p>
+
+<ul>
+  <li><strong>Take Away</strong>
+    <ul>
+      <li>Mastered a simple AR model
+  <!-- - We tried to model unknown probability distribution given a dataset, in simplest way possible. This simplest way let us easily understand that we can break complex object probability into its constituents. And then we found that we can calculate these constituents via a neural network.  -->
+  <!-- - We have successfully tried to solve the generation problem in one particular way, by creating an intuitive generative algorithm. Now we know what is a generation problem in more better way. That is, we know about modeling unknown probability distribution. --></li>
+      <li>Which lead us to introduction and mastery of these topics
+        <ul>
+          <li>generation problem and generative algorithm</li>
+          <li>probability distribution
+            <ul>
+              <li>joint distribution</li>
+              <li>conditional probability</li>
+              <li>and conditional independence</li>
+              <li>Sampling process</li>
+            </ul>
+          </li>
+          <li>How to model probability distribution given a dataset.</li>
+          <li>Softmax activation function</li>
+          <li>KL divergence</li>
+          <li>MLE</li>
+          <li>Adam</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+    
+     <!-- add a logic to only show if there is citation in a post -->
+    <div id='bibliography'>
+        <div class='wrap'> 
+             <!-- <p>References:</p> -->
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+
+</div>
+  </body>
+</html>
